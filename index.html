@@ -353,7 +353,7 @@
       });
     });
 
-    // タブ切替等
+    // ページ切替ロジック
     const pages = document.querySelectorAll('.main-section');
     const tabs = document.querySelectorAll('.nav-links a');
     const logoBtn = document.getElementById('logo-btn');
@@ -363,36 +363,39 @@
     }
     function showPage(pageId) {
       hideAllPages();
-      if(pageId==='frontsection'){
+      if (pageId === 'frontsection') {
         document.getElementById('frontsection').classList.add('active');
         tabs.forEach(tab => tab.classList.remove('active'));
-      }else{
+      } else {
         document.getElementById(pageId).classList.add('active');
         tabs.forEach(tab => tab.classList.remove('active'));
-        document.querySelector('.nav-links a[data-page="'+pageId+'"]').classList.add('active');
+        document.querySelector('.nav-links a[data-page="' + pageId + '"]').classList.add('active');
       }
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
-    // タブを押したらfrontsection完全非表示
-    tabs.forEach(tab=>{
-      tab.addEventListener('click',e=>{
+
+    // タブクリック → frontsectionは絶対に非表示
+    tabs.forEach(tab => {
+      tab.addEventListener('click', e => {
         e.preventDefault();
         const page = tab.getAttribute('data-page');
-        if(page) showPage(page);
+        if (page && page !== 'frontsection') showPage(page);
       });
     });
-    // ロゴを押したとき frontsection以外は非表示
-    logoBtn.addEventListener('click',e=>{
+    // ロゴクリックのみ frontsection表示
+    logoBtn.addEventListener('click', e => {
       e.preventDefault();
       showPage('frontsection');
     });
-    // 初回ロード時だけ frontsection
-    window.addEventListener('DOMContentLoaded', ()=>{
-      showPage('frontsection');
-      // location.hash指定があれば遷移
-      const hash = location.hash.replace('#','');
-      if(hash && document.getElementById(hash) && hash !=="frontsection"){
+
+    // 初回ロード時はfrontsectionを表示せず、Profile等タブ（またはlocation.hash）を表示
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = location.hash.replace('#', '');
+      if (hash && document.getElementById(hash) && hash !== 'frontsection') {
         showPage(hash);
+      } else {
+        // hash指定なし→Profile表示
+        showPage('profile');
       }
     });
   </script>
