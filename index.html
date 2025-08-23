@@ -73,7 +73,7 @@
       0% { opacity: 0; }
       100% { opacity: 1; }
     }
-    .front-section {
+    .start-section {
       min-height: 60vh;
       display: flex;
       flex-direction: column;
@@ -81,7 +81,7 @@
       justify-content: center;
       padding: 60px 10px 10px 10px;
     }
-    .front-title {
+    .start-title {
       font-size: 2.4rem;
       font-weight: bold;
       letter-spacing: 2px;
@@ -89,21 +89,21 @@
       color: #1793d1;
       margin-bottom: 15px;
     }
-    .front-sub {
+    .start-sub {
       font-size: 1.25rem;
       color: #64748b;
       text-align: center;
       margin-bottom: 45px;
       line-height: 1.6;
     }
-    .front-image {
+    .start-image {
       max-width: 96vw; max-height:55vh; display:block; margin: 0 auto; margin-bottom:30px;
     }
     @media (max-width:600px){
-      .front-title {font-size:1.5rem;}
-      .front-sub {font-size:1rem;}
-      .front-section{padding:34px 4px 2px 4px;}
-      .front-image{max-height:30vh;}
+      .start-title {font-size:1.5rem;}
+      .start-sub {font-size:1rem;}
+      .start-section{padding:34px 4px 2px 4px;}
+      .start-image{max-height:30vh;}
     }
     .profile-image {
       display: block;
@@ -238,14 +238,14 @@
     </div>
   </nav>
   <div class="main-content">
-    <!-- Frontページ -->
-    <section id="frontsection" class="main-section front-section">
-      <div class="front-title">Welcome to RYOSUKE's Portfolio</div>
-      <div class="front-sub">
+    <!-- Start（ロゴクリック時のみ表示！） -->
+    <section id="startsection" class="main-section start-section">
+      <div class="start-title">Welcome to RYOSUKE's Portfolio</div>
+      <div class="start-sub">
         香川高専 電子システム工学科 | 岡山県より<br>
         プログラミング・ハッカソン・社会貢献に挑戦中
       </div>
-      <img src="aboutME.png" alt="メイン画像" class="front-image">
+      <img src="aboutME.png" alt="メイン画像" class="start-image">
     </section>
     <!-- Profile -->
     <section id="profile" class="main-section">
@@ -254,7 +254,7 @@
         岡山県出身のプログラミング愛好家です。2019年に父の影響でプログラミングを始め、現在は香川高専で電子システム工学を学んでいます。ハッカソン参加やプログラミング教室開催など、技術を通じた社会貢献に取り組んでいます。
       </div>
     </section>
-    <!-- About Me (角丸なし・下余白なし) -->
+    <!-- About Me -->
     <section id="aboutme" class="main-section timeline-section">
       <div class="timeline-container">
         <div class="timeline-title">About Me</div>
@@ -363,8 +363,8 @@
     }
     function showPage(pageId) {
       hideAllPages();
-      if (pageId === 'frontsection') {
-        document.getElementById('frontsection').classList.add('active');
+      if (pageId === 'startsection') {
+        document.getElementById('startsection').classList.add('active');
         tabs.forEach(tab => tab.classList.remove('active'));
       } else {
         document.getElementById(pageId).classList.add('active');
@@ -374,24 +374,24 @@
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
 
-    // タブクリック → frontsectionは絶対に非表示
+    // タブクリック → startsectionは絶対に非表示
     tabs.forEach(tab => {
       tab.addEventListener('click', e => {
         e.preventDefault();
         const page = tab.getAttribute('data-page');
-        if (page && page !== 'frontsection') showPage(page);
+        if (page && page !== 'startsection') showPage(page);
       });
     });
-    // ロゴクリックのみ frontsection表示
+    // ロゴクリックのみ startsection表示
     logoBtn.addEventListener('click', e => {
       e.preventDefault();
-      showPage('frontsection');
+      showPage('startsection');
     });
 
-    // 初回ロード時はfrontsectionを表示せず、Profile等タブ（またはlocation.hash）を表示
+    // 初回ロード時はstartsectionを表示せず、Profile等タブ（またはlocation.hash）を表示
     window.addEventListener('DOMContentLoaded', () => {
       const hash = location.hash.replace('#', '');
-      if (hash && document.getElementById(hash) && hash !== 'frontsection') {
+      if (hash && document.getElementById(hash) && hash !== 'startsection') {
         showPage(hash);
       } else {
         // hash指定なし→Profile表示
