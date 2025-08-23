@@ -5,223 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RYOSUKE NAKAMOTO</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #f8fafc;
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family:sans-serif; background:#f9fafb; color:#333; line-height:1.6;}
 
     /* ナビゲーション */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-      z-index: 1000;
-      padding: 15px 0;
+    nav {
+      position:fixed; top:0; left:0; right:0;
+      background:#fff; border-bottom:1px solid #ddd;
+      padding:10px 20px; display:flex; justify-content:space-between; align-items:center;
+      z-index:1000;
     }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: black;
-      text-decoration: none;
-    }
-
-    /* ハンバーガーアイコン */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      padding: 5px;
-    }
-
-    .nav-toggle span {
-      width: 25px;
-      height: 3px;
-      background: #4f46e5;
-      margin: 3px 0;
-      transition: 0.3s;
-      border-radius: 2px;
-    }
-
-    .nav-toggle.active span:nth-child(1) {
-      transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .nav-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .nav-toggle.active span:nth-child(3) {
-      transform: rotate(45deg) translate(-5px, -6px);
-    }
+    .logo {font-weight:bold; font-size:1.2rem; color:#333; text-decoration:none;}
 
     .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 30px;
-      margin: 0;
-      padding: 0;
+      list-style:none; display:flex; gap:20px;
     }
-
     .nav-links a {
-      text-decoration: none;
-      color: #64748b;
-      font-weight: 500;
-      transition: color 0.2s ease;
-      padding: 5px 0;
+      text-decoration:none; color:#333; font-weight:500;
+    }
+    .nav-links a:hover {color:#4f46e5;}
+
+    /* ハンバーガーボタン */
+    .nav-toggle {display:none; flex-direction:column; gap:5px; cursor:pointer;}
+    .nav-toggle span {
+      width:25px; height:3px; background:#333; border-radius:2px; transition:0.3s;
+    }
+    .nav-toggle.active span:nth-child(1){transform:rotate(-45deg) translate(-5px,6px);}
+    .nav-toggle.active span:nth-child(2){opacity:0;}
+    .nav-toggle.active span:nth-child(3){transform:rotate(45deg) translate(-5px,-6px);}
+
+    /* スマホ用メニュー */
+    @media(max-width:768px){
+      .nav-toggle{display:flex;}
+      .nav-links{
+        position:fixed; top:60px; right:-100%;
+        width:200px; height:calc(100vh - 60px);
+        background:#fff;
+        flex-direction:column; justify-content:flex-start; align-items:center;
+        padding:30px 0; gap:20px;
+        transition:right 0.3s ease;
+        border-left:1px solid #ddd;
+      }
+      .nav-links.active{right:0;}
     }
 
-    .nav-links a:hover {
-      color: #4f46e5;
-    }
+    /* コンテンツ */
+    main {padding:100px 20px 50px; max-width:800px; margin:auto;}
+    section {margin-bottom:60px; background:#fff; padding:30px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.05);}
+    h2 {margin-bottom:15px; font-size:1.5rem; color:#222; border-left:4px solid #4f46e5; padding-left:10px;}
 
-    /* メインコンテンツの上部余白 */
-    .main-content {
-      margin-top: 80px;
-    }
-
-    /* ヘッダー */
-    .header {
-      background: #ffffff;
-      height: 750px;
-      border-radius: 0px;
-      margin-bottom: 50px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      text-align: center;
-      position: relative;
-      border: 1px solid #e2e8f0;
-    }
-
-    .header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: #4f46e5;
-      border-radius: 20px 20px 0 0;
-    }
-
-    /* 共通セクションなどは省略（元コードそのまま） */
-
-    /* レスポンシブ */
-    @media (max-width: 768px) {
-      .container {
-        padding: 15px;
-      }
-
-      .nav-container {
-        padding: 0 15px;
-      }
-
-      .nav-toggle {
-        display: flex;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: 70px;
-        right: -100%;
-        width: 250px;
-        height: calc(100vh - 70px);
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(15px);
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 50px 0;
-        gap: 30px;
-        transition: right 0.3s ease;
-        border-left: 1px solid rgba(226, 232, 240, 0.8);
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .nav-links.active {
-        right: 0;
-      }
-
-      .nav-links a {
-        font-size: 1.1rem;
-        padding: 10px 20px;
-        width: 100%;
-        text-align: center;
-        border-radius: 8px;
-        margin: 0 20px;
-      }
-
-      .nav-links a:hover {
-        background: rgba(79, 70, 229, 0.1);
-      }
-
-      .main-content {
-        margin-top: 70px;
-      }
-    }
+    .works-grid {display:grid; gap:20px;}
+    .work-card {padding:20px; border:1px solid #eee; border-radius:8px; background:#fafafa;}
+    .work-card h3 {margin-bottom:8px; font-size:1.2rem;}
+    .footer {text-align:center; padding:20px; color:#666; font-size:0.9rem;}
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- ナビゲーション -->
-    <nav class="nav">
-      <div class="nav-container">
-        <a href="#" class="nav-logo">RYOSUKE</a>
-
-        <!-- ハンバーガーアイコン -->
-        <div class="nav-toggle" id="nav-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <!-- メニュー -->
-        <ul class="nav-links" id="nav-links">
-          <li><a href="#about">Profile</a></li>
-          <li><a href="#history">About Me</a></li>
-          <li><a href="#projects">Works</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <div class="main-content">
-      <!-- ヘッダー -->
-      <header class="header">
-        <img src="aboutME.png" alt="プロフィール画像">
-      </header>
-
-      <!-- 以下は元の Profile, About Me, Works, Footer セクションそのまま -->
+  <nav>
+    <a href="#" class="logo">RYOSUKE</a>
+    <!-- ハンバーガー -->
+    <div class="nav-toggle" id="nav-toggle">
+      <span></span><span></span><span></span>
     </div>
-  </div>
+    <!-- メニュー -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">Profile</a></li>
+      <li><a href="#history">About Me</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-  <!-- JavaScript: ハンバーガー動作 -->
+  <main>
+    <section id="about">
+      <h2>Profile</h2>
+      <p>岡山県出身のプログラミング愛好家です。2019年に父の影響でプログラミングを始め、現在は香川高専で電子システム工学を学んでいます。ハッカソン参加やプログラミング教室開催などを通じて、技術で社会に貢献したいと考えています。</p>
+    </section>
+
+    <section id="history">
+      <h2>About Me</h2>
+      <p>2010年 岡山市に生まれる<br>
+         2019年 父の講座でプログラミング開始<br>
+         2023年 空手で全国出場<br>
+         2024年 公民館でプログラミング講座開催<br>
+         2025年 香川高専入学・ハッカソン参加</p>
+    </section>
+
+    <section id="works">
+      <h2>Works</h2>
+      <div class="works-grid">
+        <div class="work-card">
+          <h3>らくぺん</h3>
+          <p>過去問を共有する学習アプリ。学生同士で効率的な学びを実現。</p>
+        </div>
+        <div class="work-card">
+          <h3>PrepMate</h3>
+          <p>朝の準備を効率化するアプリ。LINE YAHOO HACKKUで開発。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:nakamotoryoke@gmail.com">nakamotoryoke@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/ryorig" target="_blank">ryorig</a></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 RYOSUKE NAKAMOTO
+  </footer>
+
   <script>
     const navToggle = document.getElementById('nav-toggle');
     const navLinks = document.getElementById('nav-links');
@@ -231,7 +125,7 @@
       navLinks.classList.toggle('active');
     });
 
-    // メニュークリック時に閉じる
+    // メニューをクリックしたら閉じる
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         navToggle.classList.remove('active');
