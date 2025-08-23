@@ -238,7 +238,7 @@
     </div>
   </nav>
   <div class="main-content">
-    <!-- Frontページ（最初またはロゴクリック時のみ表示）-->
+    <!-- Frontページ -->
     <section id="frontsection" class="main-section front-section">
       <div class="front-title">Welcome to RYOSUKE's Portfolio</div>
       <div class="front-sub">
@@ -353,23 +353,27 @@
       });
     });
 
-    // タブ切替 (frontsectionは特殊)
+    // タブ切替等
     const pages = document.querySelectorAll('.main-section');
     const tabs = document.querySelectorAll('.nav-links a');
     const logoBtn = document.getElementById('logo-btn');
+
     function hideAllPages() {
       pages.forEach(page => page.classList.remove('active'));
     }
     function showPage(pageId) {
       hideAllPages();
-      document.getElementById(pageId).classList.add('active');
-      tabs.forEach(tab => tab.classList.remove('active'));
-      if(pageId!=="frontsection"){
+      if(pageId==='frontsection'){
+        document.getElementById('frontsection').classList.add('active');
+        tabs.forEach(tab => tab.classList.remove('active'));
+      }else{
+        document.getElementById(pageId).classList.add('active');
+        tabs.forEach(tab => tab.classList.remove('active'));
         document.querySelector('.nav-links a[data-page="'+pageId+'"]').classList.add('active');
       }
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
-    // タブを押したらfrontsection非表示,他セクション表示
+    // タブを押したらfrontsection完全非表示
     tabs.forEach(tab=>{
       tab.addEventListener('click',e=>{
         e.preventDefault();
@@ -377,24 +381,19 @@
         if(page) showPage(page);
       });
     });
-    // ロゴ押したらfrontsectionだけ表示・タブ非アクティブ
+    // ロゴを押したとき frontsection以外は非表示
     logoBtn.addEventListener('click',e=>{
       e.preventDefault();
-      hideAllPages();
-      document.getElementById('frontsection').classList.add('active');
-      tabs.forEach(tab => tab.classList.remove('active'));
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      showPage('frontsection');
     });
-    // 初回ロード時だけfrontsection
+    // 初回ロード時だけ frontsection
     window.addEventListener('DOMContentLoaded', ()=>{
-      hideAllPages();
-      document.getElementById('frontsection').classList.add('active');
-      tabs.forEach(tab => tab.classList.remove('active'));
-    });
-    // location.hashで直接アクセスした場合はタブページへ遷移
-    window.addEventListener('DOMContentLoaded', ()=>{
+      showPage('frontsection');
+      // location.hash指定があれば遷移
       const hash = location.hash.replace('#','');
-      if(hash && document.getElementById(hash) && hash!=="frontsection") showPage(hash);
+      if(hash && document.getElementById(hash) && hash !=="frontsection"){
+        showPage(hash);
+      }
     });
   </script>
 </body>
