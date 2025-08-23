@@ -238,7 +238,7 @@
     </div>
   </nav>
   <div class="main-content">
-    <!-- Start（ロゴクリック時のみ表示！） -->
+    <!-- Start（ロゴクリック時だけ表示！） -->
     <section id="startsection" class="main-section start-section">
       <div class="start-title">Welcome to RYOSUKE's Portfolio</div>
       <div class="start-sub">
@@ -382,6 +382,7 @@
         if (page && page !== 'startsection') showPage(page);
       });
     });
+
     // ロゴクリックのみ startsection表示
     logoBtn.addEventListener('click', e => {
       e.preventDefault();
@@ -394,8 +395,7 @@
       if (hash && document.getElementById(hash) && hash !== 'startsection') {
         showPage(hash);
       } else {
-        // hash指定なし→Profile表示
-        showPage('profile');
+        showPage('profile'); // defaultページ
       }
     });
   </script>
