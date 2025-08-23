@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RYOSUKE NAKAMOTO - Frontpage</title>
+  <title>RYOSUKE NAKAMOTO</title>
   <style>
     body {
       background: #f8fafc;
-      margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #333;
+      margin: 0;
       min-height: 100vh;
     }
+    /* ナビ */
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -29,54 +30,209 @@
       justify-content: space-between;
       align-items: center;
     }
-    .nav-logo { font-size: 1.5rem; font-weight: bold; color: black; text-decoration: none; }
-    .nav-toggle { display: none; flex-direction: column; cursor: pointer; padding: 5px; }
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: black;
+      text-decoration: none;
+    }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+    }
     .nav-toggle span { width: 25px; height: 3px; background: #4f46e5; margin: 3px 0; border-radius: 2px; transition: .3s;}
-    .nav-toggle.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px,6px);}
-    .nav-toggle.active span:nth-child(2) { opacity: 0;}
-    .nav-toggle.active span:nth-child(3) { transform: rotate(45deg) translate(-5px,-6px);}
-    .nav-links { display:flex; list-style:none; gap:30px; }
-    .nav-links a { text-decoration:none; color:#64748b; font-weight:500; }
-    .nav-links a:hover { color:#4f46e5; }
+    .nav-toggle.active span:nth-child(1) {transform: rotate(-45deg) translate(-5px,6px);}
+    .nav-toggle.active span:nth-child(2) {opacity:0;}
+    .nav-toggle.active span:nth-child(3) {transform: rotate(45deg) translate(-5px,-6px);}
+    .nav-links { display: flex; list-style: none; gap: 30px; }
+    .nav-links a {
+      text-decoration: none;
+      color: #64748b;
+      font-weight: 500;
+      padding: 5px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .nav-links a.active {
+      color: #4f46e5;
+      border-bottom: 2px solid #4f46e5;
+      pointer-events: none;
+    }
+    .nav-links a:hover { color: #4f46e5; }
+
     @media (max-width: 768px) {
+      .nav-container { padding: 0 15px; }
       .nav-toggle { display: flex; }
       .nav-links {
         position: fixed; top:70px; right:-100%;
         width: 220px; height: calc(100vh - 70px);
         background: rgba(255,255,255,0.99);
-        flex-direction:column; align-items:center; gap:30px; transition:right .3s;
-        border-left:1px solid #e2e8f0;
+        flex-direction: column; align-items: center; gap: 30px;
+        transition: right .3s; border-left:1px solid #e2e8f0;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.05);
       }
       .nav-links.active { right: 0; }
     }
-    .main-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin-top: 0;
-      /* ナビバー分下げる（PC） */
-      padding-top: 80px;
+
+    /* コンテンツ共通 */
+    .main-content {
+      margin-top: 80px;
+      min-height: 80vh;
+      transition: background 0.2s;
     }
-    .main-image {
-      max-width: 95vw;
-      max-height: 85vh;
+    .main-section {
+      display: none;
+      animation: fadein .4s;
+    }
+    .main-section.active {
+      display: block;
+    }
+    @keyframes fadein {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Profileページ画像だけセンター */
+    .profile-image {
+      display: block;
+      margin: 40px auto 10px auto;
+      max-width: 98vw;
+      max-height: 65vh;
       width: auto;
       height: auto;
-      display: block;
-      margin: 0 auto;
       box-shadow: 0 4px 28px rgba(0,0,0,0.07);
       border-radius: 0;
       background: none;
     }
-    @media (max-width: 768px) {
-      .main-wrapper { padding-top: 70px;}
-      .main-image { max-width: 100vw; max-height: 55vh; }
+    .profile-desc {
+      text-align: center;
+      margin: 30px auto 30px auto;
+      font-size: 1.12rem;
+      max-width: 600px;
+    }
+
+    /* About Meタイムライン */
+    .timeline-section {
+      background: #1793d1;
+      color: #fff;
+      border-radius: 10px;
+      padding: 35px 0 35px 0;
+      margin-bottom: 40px;
+      position: relative;
+      overflow-x: auto;
+      box-shadow: 0 2px 12px rgba(30,144,255,0.08);
+    }
+    .timeline-container {
+      max-width: 700px;
+      margin: 0 auto; padding: 0 10px; position: relative;
+    }
+    .timeline-title {
+      color: #fff; text-align: center; margin-bottom: 32px;
+      font-size: 2rem; letter-spacing:1px; font-weight:700;
+    }
+    .timeline {
+      position: relative; width:100%; margin-top:15px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute; left: 120px; top: 0;
+      width: 8px; height: 100%;
+      background: #fff;
+      border-radius: 6px;
+      z-index: 1;
+    }
+    .timeline-item {
+      display: flex; align-items: flex-start; margin-bottom: 48px; min-height: 48px; position: relative;
+    }
+    .timeline-date {
+      width: 110px; text-align: right; font-size: 1.18rem; font-family: inherit; letter-spacing: 1px;
+      line-height: 1.5; font-weight: bold; flex-shrink: 0;
+    }
+    .timeline-dot {
+      width: 38px; min-width: 38px; height: 38px; background: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 2; margin: 0 18px; border: none;
+    }
+    .timeline-dot.current {
+      width: 46px; height: 62px; border-radius: 23px; margin: 0 14px; background: #fff;
+    }
+    .timeline-date.current { font-size: 1.45rem; color:#fff; font-weight:800; letter-spacing:1px;}
+    .timeline-content { font-size: 1.12rem; line-height: 1.7; white-space: pre-line; margin-top: 2px; font-weight: 400;}
+    .timeline-item:last-child .timeline-content { font-weight:500; font-size:1.12rem;}
+    @media (max-width: 600px) {
+      .timeline-section {padding:10px 0;}
+      .timeline-container {padding:5px;}
+      .timeline-title {font-size:1.12rem;}
+      .timeline-date {width:55px; font-size:0.98rem;}
+      .timeline-dot {width:22px;height:22px;min-width:22px;margin:0 8px;}
+      .timeline-dot.current {width:28px;height:43px;}
+      .timeline-content {font-size:0.89rem;}
+      .timeline::before {left: 72px; width:4px;}
+    }
+
+    /* Works */
+    .works-section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(30,144,255,0.07);
+      padding: 38px 22px;
+      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .works-title {
+      font-size: 1.5rem; margin-bottom: 18px; color:#1e293b; font-weight: bold;
+      border-left: 4px solid #4f46e5; padding-left:10px;
+    }
+    .works-list { margin:0; padding:0; list-style:none;}
+    .works-list li { margin-bottom:18px;}
+    .works-item-title { font-weight: bold;}
+    .works-tech { font-size: 0.92rem; color:#4f46e5; margin-left:5px;}
+
+    /* Contact */
+    .contact-section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(30,144,255,0.07);
+      padding: 38px 22px;
+      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .contact-title {
+      font-size: 1.5rem; margin-bottom: 18px; color:#1e293b; font-weight: bold;
+      border-left: 4px solid #4f46e5; padding-left:10px; text-align:left; display:inline-block;
+    }
+    .contact-content { font-size: 1.15rem; margin-bottom: 15px;}
+    .contact-link { color:#1793d1; word-break:break-all;}
+    .footer {
+      text-align: center;
+      padding: 26px;
+      color: #64748b;
+      margin-top: 10px;
+      background: #ffffff;
+      border-radius: 11px;
+      border: 1px solid #e2e8f0;
+      font-size: 0.96rem;
+      max-width: 700px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    @media (max-width: 768px){
+      .main-content{margin-top:70px;}
+      .works-section, .contact-section {padding:18px 7px;}
+      .works-title, .contact-title{font-size:1.14rem;}
     }
   </style>
 </head>
 <body>
+  <!-- ナビバー & タブ -->
   <nav class="nav">
     <div class="nav-container">
       <a href="#" class="nav-logo">RYOSUKE</a>
@@ -84,17 +240,115 @@
         <span></span><span></span><span></span>
       </div>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#about">Profile</a></li>
-        <li><a href="aboutme.html">About Me</a></li>
-        <li><a href="#works">Works</a></li>
+        <li><a href="#profile" data-page="profile" class="active">Profile</a></li>
+        <li><a href="#aboutme" data-page="aboutme">About Me</a></li>
+        <li><a href="#works" data-page="works">Works</a></li>
+        <li><a href="#contact" data-page="contact">Contact</a></li>
       </ul>
     </div>
   </nav>
-  <div class="main-wrapper">
-    <!-- 画像だけ中央に配置 -->
-    <img src="aboutME.png" alt="Front image" class="main-image">
+
+  <div class="main-content">
+    <!-- Profileページ -->
+    <section id="profile" class="main-section active">
+      <img src="aboutME.png" alt="Front image" class="profile-image">
+      <div class="profile-desc">
+        岡山県出身のプログラミング愛好家です。2019年に父の影響でプログラミングを始め、現在は香川高専で電子システム工学を学んでいます。ハッカソン参加やプログラミング教室開催など、技術を通じた社会貢献に取り組んでいます。
+      </div>
+    </section>
+
+    <!-- About Meページ（添付画像風タイムライン） -->
+    <section id="aboutme" class="main-section timeline-section">
+      <div class="timeline-container">
+        <div class="timeline-title">About Me</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2010</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">岡山県岡山市に生まれる</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2019.07.20</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">父がやっていた<br>プログラミング講座に通う</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2023.03.23</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">空手で全国出場</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2023.08.07</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">起業体験プログラムに参加して<br>自由研究ワークショップを開催</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2023.12.22</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">過去問を共有するアプリ「らくぺん」を開発</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2024.05.04</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">岡山の公民館で<br>プログラミング講座を開く</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2025.04.01</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">香川高専に入学</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2025.06.21</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">LINE YAHOO HACKU参加<br>朝の時間効率化アプリ「PrepMate」を開発</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date current">現在</div>
+            <div class="timeline-dot current"></div>
+            <div class="timeline-content">
+              プログラミング教室を計画中<br>
+              AKATSUKIプロジェクト<br>
+              高専プログラミングコンテスト出場予定
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Worksページ -->
+    <section id="works" class="main-section works-section">
+      <div class="works-title">Works</div>
+      <ul class="works-list">
+        <li>
+          <span class="works-item-title">らくぺん</span>
+          <span class="works-tech">Flutter / Dart / Firebase</span><br>
+          過去問を共有する学習アプリ。学生同士で効率的な学びを実現。
+        </li>
+        <li>
+          <span class="works-item-title">PrepMate</span>
+          <span class="works-tech">React / TypeScript / Node.js</span><br>
+          朝の準備を効率化するアプリ。LINE YAHOO HACKKUで開発。
+        </li>
+      </ul>
+    </section>
+
+    <!-- Contactページ -->
+    <section id="contact" class="main-section contact-section">
+      <div class="contact-title">Contact</div>
+      <div class="contact-content">
+        メール：<a href="mailto:nakamotoryoke@gmail.com" class="contact-link">nakamotoryoke@gmail.com</a>
+      </div>
+      <div class="contact-content">
+        GitHub：<a href="https://github.com/ryorig" target="_blank" class="contact-link">ryorig</a>
+      </div>
+    </section>
+    <div class="footer">
+      &copy; 2025 RYOSUKE NAKAMOTO
+    </div>
   </div>
+
   <script>
+    // ハンバーガーメニュー動作
     const navToggle = document.getElementById('nav-toggle');
     const navLinks = document.getElementById('nav-links');
     navToggle.addEventListener('click', () => {
@@ -106,6 +360,30 @@
         navToggle.classList.remove('active');
         navLinks.classList.remove('active');
       });
+    });
+
+    // タブ切替
+    const pages = document.querySelectorAll('.main-section');
+    const tabs = document.querySelectorAll('.nav-links a');
+    function showPage(pageId) {
+      pages.forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      document.querySelector('.nav-links a[data-page="'+pageId+'"]').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+    tabs.forEach(tab=>{
+      tab.addEventListener('click',e=>{
+        e.preventDefault();
+        const page = tab.getAttribute('data-page');
+        if(page) showPage(page);
+      });
+    });
+
+    // #profileなどで直接アクセスできるように
+    window.addEventListener('DOMContentLoaded', ()=>{
+      const hash = location.hash.replace('#','');
+      if(hash && document.getElementById(hash)) showPage(hash);
     });
   </script>
 </body>
