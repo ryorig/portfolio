@@ -1,137 +1,173 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RYOSUKE NAKAMOTO</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Me - Timeline</title>
   <style>
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {font-family:sans-serif; background:#f9fafb; color:#333; line-height:1.6;}
-
-    /* ナビゲーション */
-    nav {
-      position:fixed; top:0; left:0; right:0;
-      background:#fff; border-bottom:1px solid #ddd;
-      padding:10px 20px; display:flex; justify-content:space-between; align-items:center;
-      z-index:1000;
+    body {
+      background: #1793d1;
+      color: #fff;
+      font-family: 'Noto Sans JP', 'Roboto', 'Arial', sans-serif;
+      margin: 0;
+      min-height: 100vh;
     }
-    .logo {font-weight:bold; font-size:1.2rem; color:#333; text-decoration:none;}
-
-    .nav-links {
-      list-style:none; display:flex; gap:20px;
+    .timeline-container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 40px 15px;
+      position: relative;
     }
-    .nav-links a {
-      text-decoration:none; color:#333; font-weight:500;
+    .timeline-title {
+      color: #fff;
+      text-align: center;
+      margin-bottom: 32px;
+      font-size: 2rem;
+      font-family: inherit;
+      letter-spacing: 2px;
     }
-    .nav-links a:hover {color:#4f46e5;}
-
-    /* ハンバーガーボタン */
-    .nav-toggle {display:none; flex-direction:column; gap:5px; cursor:pointer;}
-    .nav-toggle span {
-      width:25px; height:3px; background:#333; border-radius:2px; transition:0.3s;
+    .timeline {
+      position: relative;
+      width: 100%;
+      margin-top: 20px;
     }
-    .nav-toggle.active span:nth-child(1){transform:rotate(-45deg) translate(-5px,6px);}
-    .nav-toggle.active span:nth-child(2){opacity:0;}
-    .nav-toggle.active span:nth-child(3){transform:rotate(45deg) translate(-5px,-6px);}
-
-    /* スマホ用メニュー */
-    @media(max-width:768px){
-      .nav-toggle{display:flex;}
-      .nav-links{
-        position:fixed; top:60px; right:-100%;
-        width:200px; height:calc(100vh - 60px);
-        background:#fff;
-        flex-direction:column; justify-content:flex-start; align-items:center;
-        padding:30px 0; gap:20px;
-        transition:right 0.3s ease;
-        border-left:1px solid #ddd;
-      }
-      .nav-links.active{right:0;}
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 120px;
+      top: 0;
+      width: 8px;
+      height: 100%;
+      background: #fff;
+      border-radius: 6px;
+      z-index: 1;
+    }
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 48px;
+      min-height: 48px;
+      position: relative;
+    }
+    .timeline-date {
+      width: 110px;
+      text-align: right;
+      font-size: 1.28rem;
+      font-family: inherit;
+      letter-spacing: 1px;
+      line-height: 1.55;
+      margin-top: 0px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .timeline-dot {
+      width: 38px;
+      min-width: 38px;
+      height: 38px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      margin: 0 18px;
+      border: none;
+    }
+    .timeline-dot.current {
+      width: 46px;
+      height: 62px;
+      border-radius: 23px;
+      margin: 0 14px;
+      background: #fff;
+      /* より縦長な形に */
+    }
+    .timeline-date.current {
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .timeline-content {
+      font-size: 1.14rem;
+      line-height: 1.7;
+      white-space: pre-line;
+      margin-top: 2px;
+      font-family: inherit;
+      font-weight: 400;
+    }
+    .timeline-item:last-child .timeline-content {
+      font-weight: 500;
+      font-size: 1.20rem;
     }
 
-    /* コンテンツ */
-    main {padding:100px 20px 50px; max-width:800px; margin:auto;}
-    section {margin-bottom:60px; background:#fff; padding:30px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.05);}
-    h2 {margin-bottom:15px; font-size:1.5rem; color:#222; border-left:4px solid #4f46e5; padding-left:10px;}
-
-    .works-grid {display:grid; gap:20px;}
-    .work-card {padding:20px; border:1px solid #eee; border-radius:8px; background:#fafafa;}
-    .work-card h3 {margin-bottom:8px; font-size:1.2rem;}
-    .footer {text-align:center; padding:20px; color:#666; font-size:0.9rem;}
+    /* スマホ対応 */
+    @media (max-width: 600px) {
+      .timeline-container { padding: 18px 5px;}
+      .timeline-title {font-size: 1.25rem;}
+      .timeline-date {width:68px; font-size:1rem;}
+      .timeline-dot {width:22px; height:22px; min-width:22px; margin:0 8px;}
+      .timeline-dot.current {width:28px; height:43px;}
+      .timeline-content {font-size:0.94rem;}
+      .timeline::before {left: 73px; width:4px;}
+    }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="#" class="logo">RYOSUKE</a>
-    <!-- ハンバーガー -->
-    <div class="nav-toggle" id="nav-toggle">
-      <span></span><span></span><span></span>
-    </div>
-    <!-- メニュー -->
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#about">Profile</a></li>
-      <li><a href="#history">About Me</a></li>
-      <li><a href="#works">Works</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <div class="timeline-container">
+    <div class="timeline-title">About Me</div>
+    <div class="timeline">
 
-  <main>
-    <section id="about">
-      <h2>Profile</h2>
-      <p>岡山県出身のプログラミング愛好家です。2019年に父の影響でプログラミングを始め、現在は香川高専で電子システム工学を学んでいます。ハッカソン参加やプログラミング教室開催などを通じて、技術で社会に貢献したいと考えています。</p>
-    </section>
-
-    <section id="history">
-      <h2>About Me</h2>
-      <p>2010年 岡山市に生まれる<br>
-         2019年 父の講座でプログラミング開始<br>
-         2023年 空手で全国出場<br>
-         2024年 公民館でプログラミング講座開催<br>
-         2025年 香川高専入学・ハッカソン参加</p>
-    </section>
-
-    <section id="works">
-      <h2>Works</h2>
-      <div class="works-grid">
-        <div class="work-card">
-          <h3>らくぺん</h3>
-          <p>過去問を共有する学習アプリ。学生同士で効率的な学びを実現。</p>
-        </div>
-        <div class="work-card">
-          <h3>PrepMate</h3>
-          <p>朝の準備を効率化するアプリ。LINE YAHOO HACKKUで開発。</p>
+      <div class="timeline-item">
+        <div class="timeline-date">2010</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">岡山県岡山市に生まれる</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2019.07.20</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">父がやっていた<br>プログラミング講座に通う</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2023.03.23</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">空手で全国出場</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2023.08.07</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">起業体験プログラムに参加して<br>自由研究ワークショップを開催</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2023.12.22</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">過去問を共有するアプリ<br>「らくぺん」を開発</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2024.05.04</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">岡山の公民館で<br>プログラミング講座を開く</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2025.04.01</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">香川高専に入学</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2025.06.21</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">LINE YAHOO HACKU参加<br>朝の時間効率化アプリ<br>「PrepMate」を開発</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date current">現在</div>
+        <div class="timeline-dot current"></div>
+        <div class="timeline-content">
+          プログラミング教室を計画中<br>
+          AKATSUKIプロジェクト<br>
+          高専プログラミングコンテスト出場予定
         </div>
       </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:nakamotoryoke@gmail.com">nakamotoryoke@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/ryorig" target="_blank">ryorig</a></p>
-    </section>
-  </main>
-
-  <footer class="footer">
-    &copy; 2025 RYOSUKE NAKAMOTO
-  </footer>
-
-  <script>
-    const navToggle = document.getElementById('nav-toggle');
-    const navLinks = document.getElementById('nav-links');
-
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('active');
-      navLinks.classList.toggle('active');
-    });
-
-    // メニューをクリックしたら閉じる
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-      });
-    });
-  </script>
+    </div>
+  </div>
 </body>
 </html>
