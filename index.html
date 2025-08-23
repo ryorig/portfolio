@@ -3,89 +3,574 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ポートフォリオ</title>
+  <title>中本怜祐 - ポートフォリオ</title>
   <style>
-    /* 最小限の基本スタイル */
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f8fafc;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 20px;
-      background-color: #fff;
-      color: #222;
     }
-    header, main, footer {
-      max-width: 800px;
-      margin: 0 auto 40px;
+
+    /* ナビゲーション */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      z-index: 1000;
+      padding: 15px 0;
     }
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.2em;
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    header p {
-      font-size: 1rem;
-      color: #555;
-      margin-top: 0;
-    }
-    section {
-      margin-bottom: 2rem;
-    }
-    h2 {
+
+    .nav-logo {
       font-size: 1.5rem;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 0.3em;
-      margin-bottom: 1em;
-    }
-    ul {
-      list-style-type: disc;
-      padding-left: 1.5em;
-    }
-    a {
-      color: #0066cc;
+      font-weight: bold;
+      color: #4f46e5;
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #64748b;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #4f46e5;
+    }
+
+    /* メインコンテンツの上部余白 */
+    .main-content {
+      margin-top: 80px;
+    }
+
+    /* ヘッダー */
+    .header {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 50px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      position: relative;
+      border: 1px solid #e2e8f0;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #4f46e5;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: #1e293b;
+    }
+
+    .header .subtitle {
+      font-size: 1.3rem;
+      color: #64748b;
+      font-weight: 400;
+    }
+
+    /* セクション共通 */
+    .section {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 50px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #1e293b;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 30px;
+      background: #4f46e5;
+      border-radius: 2px;
+    }
+
+    /* タイムライン */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #e2e8f0;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
+      background: #f8fafc;
+      padding: 30px;
+      border-radius: 15px;
+      margin-left: 20px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -33px;
+      top: 35px;
+      width: 12px;
+      height: 12px;
+      background: #ffffff;
+      border: 3px solid #4f46e5;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    }
+
+    .timeline-date {
+      font-weight: bold;
+      color: #4f46e5;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .timeline-content {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .timeline-current {
+      background: #eff6ff;
+      border: 2px solid #dbeafe;
+    }
+
+    .timeline-current::before {
+      background: #4f46e5;
+      border: none;
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
+    }
+
+    /* スキル */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .skill-category {
+      background: #f8fafc;
+      padding: 35px;
+      border-radius: 15px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .skill-category h3 {
+      color: #4f46e5;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-tag {
+      background: #4f46e5;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* プロジェクト */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+    }
+
+    .project-card {
+      background: #ffffff;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .project-image {
+      height: 200px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #64748b;
+    }
+
+    .project-content {
+      padding: 30px;
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+      color: #1e293b;
+      margin-bottom: 10px;
+    }
+
+    .project-description {
+      color: #64748b;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 25px;
+    }
+
+    .tech-tag {
+      background: #e0e7ff;
+      color: #4f46e5;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .project-link {
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .project-link.primary {
+      background: #4f46e5;
+      color: white;
+    }
+
+    .project-link.secondary {
+      border: 1px solid #4f46e5;
+      color: #4f46e5;
+    }
+
+    /* コンタクト */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .contact-item {
+      background: #f8fafc;
+      padding: 35px;
+      border-radius: 15px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+    }
+
+    .contact-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .contact-item a {
+      color: #4f46e5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-item a:hover {
+      color: #3730a3;
+    }
+
+    /* フッター */
+    .footer {
+      text-align: center;
+      padding: 40px;
+      color: #64748b;
+      margin-top: 20px;
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      
+      .nav-links {
+        gap: 15px;
+      }
+      
+      .nav-links a {
+        font-size: 0.9rem;
+      }
+      
+      .header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .section {
+        padding: 35px;
+        margin-bottom: 30px;
+      }
+      
+      .section-title {
+        font-size: 1.7rem;
+      }
+      
+      .timeline {
+        padding-left: 20px;
+      }
+      
+      .timeline-item {
+        margin-left: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>中本怜祐</h1>
-    <p>香川高専電子システム工学科1年</p>
-  </header>
+  <div class="container">
+    <!-- ナビゲーション -->
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="#" class="nav-logo">中本怜祐</a>
+        <ul class="nav-links">
+          <li><a href="#about">プロフィール</a></li>
+          <li><a href="#history">活動歴</a></li>
+          <li><a href="#skills">スキル</a></li>
+          <li><a href="#projects">制作物</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+        </div>
+  </div>
+    </nav>
 
-  <main>
-    <section id="about">
-      <h2>プロフィール</h2>
-      <p>岡山県在住</p>
+    <div class="main-content">
+      <!-- ヘッダー -->
+      <header class="header">
+        <h1>中本怜祐</h1>
+        <p class="subtitle">香川高専電子システム工学科1年</p>
+      </header>
+
+    <!-- プロフィール -->
+    <section id="about" class="section">
+      <h2 class="section-title">プロフィール</h2>
+      <p>岡山県出身のプログラミング愛好家です。2019年に父の影響でプログラミングを始め、現在は香川高専で電子システム工学を学んでいます。ハッカソンへの参加や、プログラミング教室の開催など、技術を通じた社会貢献に取り組んでいます。</p>
     </section>
 
-    <section id="skills">
-      <h2>スキル</h2>
-      <ul>
-        <li>HTML, CSS, JavaScript, Typescript, PHP, Python, Dart</li>
-        <li>React, TailwindCSS, Vue.js</li>
-      </ul>
+    <!-- 活動歴 -->
+    <section id="history" class="section">
+      <h2 class="section-title">活動歴</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">2010年</div>
+          <div class="timeline-content">岡山県岡山市に生まれる</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2019.07.20</div>
+          <div class="timeline-content">父がやっていたプログラミング講座に通う</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2023.03.23</div>
+          <div class="timeline-content">空手で全国出場</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2023.08.07</div>
+          <div class="timeline-content">起業体験プログラムに参加して自由研究ワークショップを開催</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2023.12.22</div>
+          <div class="timeline-content">過去問を共有するアプリ「らくぺん」を開発</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2024.05.04</div>
+          <div class="timeline-content">岡山の公民館でプログラミング講座を開く</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2025.04.01</div>
+          <div class="timeline-content">香川高専に入学</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2025.06.21</div>
+          <div class="timeline-content">LINE YAHOO HACKKU参加<br>朝の時間効率化アプリ「PrepMate」を開発</div>
+        </div>
+        <div class="timeline-item timeline-current">
+          <div class="timeline-date">現在</div>
+          <div class="timeline-content">
+            プログラミング教室を計画中<br>
+            AKATSUKIプロジェクト<br>
+            各プログラミングコンテスト出場予定
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="projects">
-      <h2>プロジェクト</h2>
-      <ul>
-        <li>
-          <strong></strong>いろいろ</strong>
-        </li>
-      </ul>
+    <!-- スキル -->
+    <section id="skills" class="section">
+      <h2 class="section-title">スキル</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>フロントエンド</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Vue.js</span>
+            <span class="skill-tag">TailwindCSS</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>バックエンド</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">Python</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>モバイル開発</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Dart</span>
+            <span class="skill-tag">Flutter</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="contact">
-      <h2>お問い合わせ</h2>
-      <p>メール: <a href="mailto:email@example.com">nakamotoryoke@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">ryorig</a></p>
+    <!-- 制作物 -->
+    <section id="projects" class="section">
+      <h2 class="section-title">制作物</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">📱</div>
+          <div class="project-content">
+            <h3 class="project-title">らくぺん</h3>
+            <p class="project-description">過去問を共有するアプリケーション。学生同士で効率的に学習できるプラットフォームを提供しています。</p>
+            <div class="project-tech">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Dart</span>
+              <span class="tech-tag">Firebase</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link primary">詳細を見る</a>
+              <a href="#" class="project-link secondary">GitHub</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 追加の制作物用のプレースホルダー -->
+        <div class="project-card" style="opacity: 0.5;">
+          <div class="project-image">⚡</div>
+          <div class="project-content">
+            <h3 class="project-title">PrepMate</h3>
+            <p class="project-description">LINE YAHOO HACKKUで開発した朝の時間効率化アプリ。忙しい朝をサポートします。</p>
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Node.js</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link primary">詳細を見る</a>
+              <a href="#" class="project-link secondary">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-  </main>
 
-  <footer>
-    <p>&copy; 2025 中本怜祐</p>
-  </footer>
+    <!-- お問い合わせ -->
+    <section id="contact" class="section">
+      <h2 class="section-title">お問い合わせ</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <p><a href="mailto:nakamotoryoke@gmail.com">nakamotoryoke@gmail.com</a></p>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">🐙</span>
+          <p><a href="https://github.com/ryorig" target="_blank" rel="noopener noreferrer">GitHub: ryorig</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+      <p>&copy; 2025 中本怜祐 All rights reserved.</p>
+    </footer>
+  </div>
 </body>
 </html>
