@@ -22,7 +22,7 @@
       max-width: 1200px; margin: 0 auto; padding: 0 20px;
       display: flex; justify-content: space-between; align-items: center;
     }
-    .nav-logo { font-size: 1.5rem; font-weight: bold; color: black; text-decoration: none; }
+    .nav-logo { font-size: 1.5rem; font-weight: bold; color: black; text-decoration: none; cursor: pointer; }
     .nav-toggle { display: none; flex-direction: column; cursor: pointer; padding: 5px; }
     .nav-toggle span { width: 25px; height: 3px; background: #4f46e5; margin: 3px 0; border-radius: 2px; transition: .3s;}
     .nav-toggle.active span:nth-child(1) {transform: rotate(-45deg) translate(-5px,6px);}
@@ -73,8 +73,6 @@
       0% { opacity: 0; }
       100% { opacity: 1; }
     }
-
-    /* frontsection */
     .front-section {
       min-height: 60vh;
       display: flex;
@@ -107,8 +105,6 @@
       .front-section{padding:34px 4px 2px 4px;}
       .front-image{max-height:30vh;}
     }
-
-    /* Profileページ画像だけセンター */
     .profile-image {
       display: block;
       margin: 40px auto 10px auto;
@@ -126,13 +122,11 @@
       font-size: 1.12rem;
       max-width: 600px;
     }
-
-    /* About Me画面（青背景, 角丸なし, 下余白なし） */
     .timeline-section {
       background: #1793d1;
       color: #fff;
       border-radius: 0 !important;
-      padding: 35px 0 0 0; /* 上だけ余白、下は0 */
+      padding: 35px 0 0 0;
       margin-bottom: 0;
       position: relative;
       overflow-x: auto;
@@ -231,13 +225,12 @@
   <!-- ナビバー & タブ -->
   <nav class="nav">
     <div class="nav-container">
-      <a href="#" class="nav-logo">RYOSUKE</a>
+      <a href="#" class="nav-logo" id="logo-btn">RYOSUKE</a>
       <div class="nav-toggle" id="nav-toggle">
         <span></span><span></span><span></span>
       </div>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#frontsection" data-page="frontsection" class="active">Front</a></li>
-        <li><a href="#profile" data-page="profile">Profile</a></li>
+        <li><a href="#profile" data-page="profile" class="active">Profile</a></li>
         <li><a href="#aboutme" data-page="aboutme">About Me</a></li>
         <li><a href="#works" data-page="works">Works</a></li>
         <li><a href="#contact" data-page="contact">Contact</a></li>
@@ -245,8 +238,8 @@
     </div>
   </nav>
   <div class="main-content">
-    <!-- Frontページ -->
-    <section id="frontsection" class="main-section front-section active">
+    <!-- Frontページ（最初またはロゴクリック時のみ表示）-->
+    <section id="frontsection" class="main-section front-section">
       <div class="front-title">Welcome to RYOSUKE's Portfolio</div>
       <div class="front-sub">
         香川高専 電子システム工学科 | 岡山県より<br>
@@ -360,16 +353,23 @@
       });
     });
 
-    // タブ切替
+    // タブ切替 (frontsectionは特殊)
     const pages = document.querySelectorAll('.main-section');
     const tabs = document.querySelectorAll('.nav-links a');
-    function showPage(pageId) {
+    const logoBtn = document.getElementById('logo-btn');
+    function hideAllPages() {
       pages.forEach(page => page.classList.remove('active'));
+    }
+    function showPage(pageId) {
+      hideAllPages();
       document.getElementById(pageId).classList.add('active');
       tabs.forEach(tab => tab.classList.remove('active'));
-      document.querySelector('.nav-links a[data-page="'+pageId+'"]').classList.add('active');
+      if(pageId!=="frontsection"){
+        document.querySelector('.nav-links a[data-page="'+pageId+'"]').classList.add('active');
+      }
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
+    // タブを押したらfrontsection非表示,他セクション表示
     tabs.forEach(tab=>{
       tab.addEventListener('click',e=>{
         e.preventDefault();
@@ -377,11 +377,24 @@
         if(page) showPage(page);
       });
     });
-
-    // #frontsectionなどで直接アクセスできるように
+    // ロゴ押したらfrontsectionだけ表示・タブ非アクティブ
+    logoBtn.addEventListener('click',e=>{
+      e.preventDefault();
+      hideAllPages();
+      document.getElementById('frontsection').classList.add('active');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+    // 初回ロード時だけfrontsection
+    window.addEventListener('DOMContentLoaded', ()=>{
+      hideAllPages();
+      document.getElementById('frontsection').classList.add('active');
+      tabs.forEach(tab => tab.classList.remove('active'));
+    });
+    // location.hashで直接アクセスした場合はタブページへ遷移
     window.addEventListener('DOMContentLoaded', ()=>{
       const hash = location.hash.replace('#','');
-      if(hash && document.getElementById(hash)) showPage(hash);
+      if(hash && document.getElementById(hash) && hash!=="frontsection") showPage(hash);
     });
   </script>
 </body>
