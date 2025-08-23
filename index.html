@@ -1,295 +1,82 @@
+<!-- frontpage.html -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RYOSUKE NAKAMOTO</title>
+  <title>RYOSUKE NAKAMOTO - Frontpage</title>
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #f8fafc;
-      min-height: 100vh;
-    }
-    .container { max-width:1200px; margin:0 auto; padding:20px; }
-
-    /* ナビゲーション */
-    .nav {
-      position: fixed; top:0; left:0; right:0;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(226,232,240,0.8);
-      z-index: 1000; padding:15px 0;
-    }
-    .nav-container {
-      max-width: 1200px; margin:0 auto; padding:0 20px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .nav-logo { font-size:1.5rem; font-weight:bold; color:black; text-decoration:none; }
+    body { background:#f8fafc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:#333; margin:0;}
+    .container { max-width:1200px; margin:0 auto; padding:20px;}
+    .nav { position:fixed; top:0; left:0; right:0; background:rgba(255,255,255,0.95); border-bottom:1px solid #e2e8f0; z-index:1000; }
+    .nav-container { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding: 0 20px;}
+    .nav-logo { font-size:1.5rem; font-weight:bold; color:black; text-decoration:none;}
     .nav-toggle { display:none; flex-direction:column; cursor:pointer; padding:5px; }
-    .nav-toggle span { width:25px; height:3px; background:#4f46e5; margin:3px 0; transition:0.3s; border-radius:2px; }
-    .nav-toggle.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
-    .nav-toggle.active span:nth-child(2) { opacity:0; }
-    .nav-toggle.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
-    .nav-links { display:flex; list-style:none; gap:30px; margin:0; padding:0; }
-    .nav-links a { text-decoration:none; color:#64748b; font-weight:500; transition:color 0.2s ease; padding:5px 0; }
-    .nav-links a:hover { color:#4f46e5; }
-    .main-content { margin-top:80px; }
-
-    /* ヘッダー */
-    .header {
-      background: #fff;
-      height: 400px;
-      border-radius: 0px;
-      margin-bottom: 50px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      text-align: center;
-      position: relative;
-      border: 1px solid #e2e8f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .header img {
-      max-width: 100%;
-      max-height: 370px;
-      object-fit: contain;
-      border-radius: 10px;
-    }
-    .header::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px; background: #4f46e5;
-      border-radius: 20px 20px 0 0;
-    }
-
-    /* About Meタイムライン */
-    .timeline-section {
-      background: #1793d1;
-      color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 12px rgba(30,144,255,0.10);
-      padding: 35px 0 35px 0;
-      margin-bottom: 40px;
-      position: relative;
-      overflow-x: auto;
-    }
-    .timeline-container {
-      max-width: 700px;
-      margin: 0 auto; padding: 0 10px; position: relative;
-    }
-    .timeline-title {
-      color: #fff; text-align: center; margin-bottom: 32px;
-      font-size: 2rem; letter-spacing:1.5px; font-family:inherit; font-weight:700;
-    }
-    .timeline {
-      position: relative; width:100%; margin-top:15px;
-    }
-    .timeline::before {
-      content: "";
-      position: absolute; left: 120px; top: 0;
-      width: 8px; height: 100%;
-      background: #fff;
-      border-radius: 6px;
-      z-index: 1;
-    }
-    .timeline-item {
-      display: flex; align-items: flex-start; margin-bottom: 48px;
-      min-height: 48px; position: relative;
-    }
-    .timeline-date {
-      width: 110px; text-align: right; font-size: 1.18rem;
-      font-family: inherit; letter-spacing: 1px; line-height: 1.5; font-weight: bold; flex-shrink: 0;
-    }
-    .timeline-dot {
-      width: 38px; min-width: 38px; height: 38px; background: #fff;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      position: relative; z-index: 2; margin: 0 18px; border: none;
-    }
-    .timeline-dot.current {
-      width: 46px; height: 62px; border-radius: 23px; margin: 0 14px; background:#fff;
-    }
-    .timeline-date.current {
-      font-size: 1.45rem; color:#fff; font-weight:800; letter-spacing:1px;
-    }
-    .timeline-content {
-      font-size: 1.12rem; line-height: 1.7; white-space: pre-line; margin-top: 2px;
-      font-family: inherit; font-weight: 400;
-    }
-    .timeline-item:last-child .timeline-content {
-      font-weight:500; font-size:1.12rem;
-    }
-    @media (max-width: 600px) {
-      .timeline-section {padding:14px 0;}
-      .timeline-container {padding:5px;}
-      .timeline-title {font-size:1.12rem;}
-      .timeline-date {width:55px; font-size:0.98rem;}
-      .timeline-dot {width:22px;height:22px;min-width:22px;margin:0 8px;}
-      .timeline-dot.current {width:28px;height:43px;}
-      .timeline-content {font-size:0.89rem;}
-      .timeline::before {left: 73px; width:4px;}
-    }
-
-    /* 他セクション共通 */
-    .section {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(30,144,255,0.07);
-      padding: 38px 22px;
-      margin-bottom: 40px;
-    }
-    .section-title {
-      font-size: 1.5rem; margin-bottom: 15px; color:#1e293b; font-weight: bold;
-      border-left: 4px solid #4f46e5; padding-left:10px;
-    }
-
-    /* フッター */
-    .footer {
-      text-align: center;
-      padding: 40px;
-      color: #64748b;
-      margin-top: 20px;
-      background: #ffffff;
-      border-radius: 20px;
-      border: 1px solid #e2e8f0;
-    }
-
-    /* レスポンシブ */
+    .nav-toggle span { width:25px; height:3px; background:#4f46e5; margin:3px 0; border-radius:2px; transition:.3s;}
+    .nav-toggle.active span:nth-child(1) {transform: rotate(-45deg) translate(-5px,6px);}
+    .nav-toggle.active span:nth-child(2) {opacity:0;}
+    .nav-toggle.active span:nth-child(3) {transform: rotate(45deg) translate(-5px,-6px);}
+    .nav-links {display:flex; list-style:none; gap:30px;}
+    .nav-links a {text-decoration:none; color:#64748b; font-weight:500;}
+    .nav-links a:hover {color:#4f46e5;}
     @media (max-width: 768px) {
-      .container { padding: 15px; }
-      .nav-container { padding: 0 15px; }
       .nav-toggle { display: flex; }
       .nav-links {
         position: fixed; top:70px; right:-100%;
         width:250px; height:calc(100vh - 70px);
-        background:rgba(255,255,255,0.98); backdrop-filter:blur(15px);
-        flex-direction: column; justify-content: flex-start; align-items:center;
-        padding: 50px 0; gap: 30px; transition: right 0.3s ease;
-        border-left: 1px solid rgba(226,232,240,0.8); box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        background:rgba(255,255,255,0.98); flex-direction:column;
+        align-items:center; gap:30px; transition:right .3s; border-left:1px solid #e2e8f0;
       }
       .nav-links.active { right:0; }
-      .nav-links a { font-size: 1.1rem; padding: 10px 20px; width:100%; text-align:center; border-radius:8px; margin:0 20px;}
-      .nav-links a:hover { background: rgba(79, 70, 229, 0.1); }
-      .main-content { margin-top: 70px; }
-      .header { padding: 20px 8px; height: 210px;}
-      .header img { max-height: 120px;}
-      .section { padding:20px 10px; margin-bottom:18px;}
-      .section-title { font-size:1.15rem; margin-bottom:13px;}
-      .footer {padding:20px;}
+      .container{padding:10px;}
+    }
+    .main-content { margin-top:80px; }
+    .header {
+      background:#fff;
+      height:400px;
+      border-radius:0px;
+      margin-bottom:50px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.08);
+      text-align:center;
+      position:relative;
+      border:1px solid #e2e8f0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .header img { max-width:100%; max-height:370px; object-fit:contain; }
+    .header::before {
+      content:'';
+      position:absolute;
+      top:0; left:0; right:0;
+      height:4px; background:#4f46e5;
+      border-radius:20px 20px 0 0;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- ナビゲーション -->
     <nav class="nav">
       <div class="nav-container">
         <a href="#" class="nav-logo">RYOSUKE</a>
         <div class="nav-toggle" id="nav-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </div>
         <ul class="nav-links" id="nav-links">
           <li><a href="#about">Profile</a></li>
-          <li><a href="#history">About Me</a></li>
+          <li><a href="aboutme.html">About Me</a></li>
           <li><a href="#projects">Works</a></li>
         </ul>
       </div>
     </nav>
-
     <div class="main-content">
-      <!-- ヘッダー -->
+      <!-- ここがfrontpage部分 -->
       <header class="header">
         <img src="aboutME.png" alt="プロフィール画像">
       </header>
-
-      <!-- Profile セクション -->
-      <section id="about" class="section">
-        <h2 class="section-title">Profile</h2>
-        <p>
-          岡山県出身のプログラミング愛好家です。2019年に父の影響でプログラミングを始め、現在は香川高専で電子システム工学を学んでいます。ハッカソンへの参加や、プログラミング教室の開催など、技術を通じた社会貢献に取り組んでいます。
-        </p>
-      </section>
-
-      <!-- About Me セクション (タイムライン画像風) -->
-      <section id="history" class="timeline-section">
-        <div class="timeline-container">
-          <div class="timeline-title">About Me</div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-date">2010</div>
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">岡山県岡山市に生まれる</div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date">2019.07.20</div>
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">父がやっていた<br>プログラミング講座に通う</div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date">2023.03.23</div>
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">空手で全国出場</div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date">2023.08.07</div>
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">起業体験プログラムに参加して<br>自由研究ワークショップを開催</div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date">2023.12.22</div>
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">過去問を共有するアプリ「らくぺん」を開発</div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date">2024.05.04</div>
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">岡山の公民館で<br>プログラミング講座を開く</div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date">2025.04.01</div>
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">香川高専に入学</div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date">2025.06.21</div>
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">LINE YAHOO HACKU参加<br>朝の時間効率化アプリ「PrepMate」を開発</div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date current">現在</div>
-              <div class="timeline-dot current"></div>
-              <div class="timeline-content">
-                プログラミング教室を計画中<br>
-                AKATSUKIプロジェクト<br>
-                高専プログラミングコンテスト出場予定
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Works セクション -->
-      <section id="projects" class="section">
-        <h2 class="section-title">Works</h2>
-        <ul>
-          <li><strong>らくぺん</strong>：過去問を共有する学習アプリ</li>
-          <li><strong>PrepMate</strong>：朝の準備を効率化するアプリ</li>
-        </ul>
-      </section>
+      <!-- 他セクションも必要なら追加してください -->
     </div>
-
-    <footer class="footer">
-      &copy; 2025 RYOSUKE NAKAMOTO
-    </footer>
   </div>
-
-  <!-- JavaScript: ハンバーガーメニュー -->
   <script>
     const navToggle = document.getElementById('nav-toggle');
     const navLinks = document.getElementById('nav-links');
