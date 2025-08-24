@@ -80,49 +80,22 @@
       100% { opacity: 1; }
     }
 
-/* Profile 横並びレイアウト */
-#profile {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 50px; /* 画像とテキストの間隔 */
-  flex-wrap: wrap;
-  padding: 60px 20px;
-}
-
-.profile-image {
-  max-width: 340px; /* 画像も大きめ */
-  height: auto;
-  flex-shrink: 0;
-  border-radius: 8px;
-}
-
 .profile-desc {
-  font-size: 1.6rem;   /* 文字を大きく */
-  line-height: 2.1;
-  max-width: 520px;
-  padding-left: 25px;  /* 棒と文字の間隔 */
-  border-left: 6px solid #1e3a8a; /* 縦棒を追加 */
+  text-align: center;   /* 中央揃え */
+  margin: 30px auto;
+  font-size: 1.35rem;   /* 文字大きめ */
+  max-width: 680px;
+  line-height: 1.9;
+  background: none;     /* 背景なし */
+  border: none;         /* 枠なし */
+  box-shadow: none;     /* 影なし */
+  padding: 0;           /* 余白なし */
 }
 .profile-desc b {
   color: #1e3a8a;
   font-weight: 700;
 }
 
-/* スマホ対応 */
-@media (max-width: 768px) {
-  #profile {
-    flex-direction: column; /* 縦並びに変更 */
-    gap: 20px;
-  }
-  .profile-desc {
-    border-left: none; /* スマホでは縦棒なし */
-    padding-left: 0;
-    text-align: center;
-    font-size: 1.3rem;
-  }
-}
 
 
     /* Timeline */
