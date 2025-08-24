@@ -80,110 +80,49 @@
       100% { opacity: 1; }
     }
 
-/* Profile セクション横並びレイアウト *//* Profile 横並びレイアウト */
-#profile {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 50px; /* 画像とテキストの間隔 */
-  flex-wrap: wrap;
-  padding: 60px 20px;
-}
+    /* Profile */
+    .profile-image {
+      display: block;
+      margin: 40px auto 10px auto;
+      max-width: 98vw;
+      max-height: 65vh;
+      width: auto;
+      height: auto;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.12);
+      border-radius: 8px;
+      background: none;
+    }
+    .profile-desc {
+      text-align: left;
+      margin: 30px auto;
+      font-size: 1.35rem; /* 大きめで上品さを出す */
+      max-width: 680px;
+      line-height: 1.9;
+      box-shadow: 0px 3px 14px rgba(0,0,0,0.15);
+      padding: 18px 24px;
+      background: none;
+      border: none;
+    }
+    .profile-desc b {
+      color: #1e3a8a;
+      font-weight: 700;
+    }
 
-.profile-image {
-  max-width: 340px; /* 画像も大きめ */
-  height: auto;
-  flex-shrink: 0;
-  border-radius: 8px;
-}
-
-.profile-desc {
-  font-size: 1.6rem;   /* 文字を大きく */
-  line-height: 2.1;
-  max-width: 520px;
-  padding-left: 25px;  /* 棒と文字の間隔 */
-  border-left: 6px solid #1e3a8a; /* 縦棒を追加 */
-}
-.profile-desc b {
-  color: #1e3a8a;
-  font-weight: 700;
-}
-
-/* スマホ対応 */
-@media (max-width: 768px) {
-  #profile {
-    flex-direction: column; /* 縦並びに変更 */
-    gap: 20px;
-  }
-  .profile-desc {
-    border-left: none; /* スマホでは縦棒なし */
-    padding-left: 0;
-    text-align: center;
-    font-size: 1.3rem;
-  }
-}
-
-
-
-
-    /* Timeline */    .timeline-section {
+    /* Timeline */
+    .timeline-section {
       background: #1793d1;
       color: #fff;
-      border-radius: 0 !important;
       padding: 35px 0 0 0;
-      margin-bottom: 0;
       position: relative;
-      overflow-x: auto;
-      box-shadow: none;
     }
-    .timeline-container {
-      max-width: 700px;
-      margin: 0 auto; padding: 0 10px; position: relative;
-    }
-    .timeline-title {
-      color: #fff; text-align: center; margin-bottom: 32px;
-      font-size: 2rem; letter-spacing:1px; font-weight:700;
-    }
-    .timeline {
-      position: relative; width:100%; margin-top:15px;
-    }
-    .timeline::before {
-      content: "";
-      position: absolute; left: 120px; top: 0;
-      width: 8px; height: 100%;
-      background: #fff;
-      border-radius: 6px;
-      z-index: 1;
-    }
-    .timeline-item {
-      display: flex; align-items: flex-start; margin-bottom: 48px; min-height: 48px; position: relative;
-    }
-    .timeline-date {
-      width: 110px; text-align: right; font-size: 1.18rem; font-family: inherit; letter-spacing: 1px;
-      line-height: 1.5; font-weight: bold; flex-shrink: 0;
-    }
-    .timeline-dot {
-      width: 38px; min-width: 38px; height: 38px; background: #fff;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      position: relative; z-index: 2; margin: 0 18px; border: none;
-    }
-    .timeline-dot.current {
-      width: 46px; height: 62px; border-radius: 23px; margin: 0 14px; background: #fff;
-    }
-    .timeline-date.current { font-size: 1.45rem; color:#fff; font-weight:800; letter-spacing:1px;}
-    .timeline-content { font-size: 1.12rem; line-height: 1.7; white-space: pre-line; margin-top: 2px; font-weight: 400;}
-    .timeline-item:last-child .timeline-content { font-weight:500; font-size:1.12rem;}
-    @media (max-width: 600px) {
-      .timeline-section {padding:10px 0 0 0; border-radius:0;}
-      .timeline-container {padding:5px;}
-      .timeline-title {font-size:1.12rem;}
-      .timeline-date {width:55px; font-size:0.98rem;}
-      .timeline-dot {width:22px;height:22px;min-width:22px;margin:0 8px;}
-      .timeline-dot.current {width:28px;height:43px;}
-      .timeline-content {font-size:0.89rem;}
-      .timeline::before {left: 72px; width:4px;}
-    }
+    .timeline-container { max-width: 700px; margin: 0 auto; padding: 0 10px;}
+    .timeline-title { font-size: 2rem; font-weight: 700; font-family: 'Noto Serif JP', serif; text-align:center;margin-bottom:30px; }
+    .timeline::before { content: ""; position: absolute; left:120px; top:0; width:8px; height:100%; background:#fff; border-radius:6px; }
+    .timeline-item { display:flex; align-items:flex-start; margin-bottom:48px;}
+    .timeline-date { width:110px; text-align:right; font-size:1.2rem; font-weight:600; }
+    .timeline-dot { width:38px; height:38px; background:#fff; border-radius:50%; margin:0 18px;}
+    .timeline-content { font-size:1.1rem; line-height:1.7;}
+
     /* Works */
     .works-section {
       background: #fff;
@@ -233,10 +172,10 @@
     <section id="profile" class="main-section">
       <img src="aboutME.png" alt="Front image" class="profile-image">
       <div class="profile-desc">
-        <b></b>中本怜祐<br>
+        <b>名前：</b>中本怜祐<br>
         <b>屋号：</b>ナカモトリョウスケ<br>
-        <b></b>STEAM教育や地域課題のソリューションづくりに奮闘しています。<br>
-        <b></b>香川高専電子システム工学科1年<br>
+        <b>活動：</b>STEAM教育や地域課題のソリューションづくりに奮闘しています。<br>
+        <b>所属：</b>香川高専電子システム工学科<br>
         <b>出身：</b>岡山県
       </div>
     </section>
@@ -246,55 +185,15 @@
       <div class="timeline-container">
         <div class="timeline-title">About Me</div>
         <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-date">2010</div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">岡山県岡山市に生まれる</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2019</div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">父がやっていた<br>プログラミング講座に通う</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2023</div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">空手で全国出場</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date"></div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">起業体験プログラムに参加して<br>自由研究ワークショップを開催</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date"></div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">過去問を共有するアプリ「らくぺん」を開発</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2024</div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">岡山の公民館で<br>プログラミング講座を開く</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2025</div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">香川高専に入学</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date"></div>
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">LINE YAHOO HACKU参加<br>朝の時間効率化アプリ「PrepMate」を開発</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date current">現在</div>
-            <div class="timeline-dot current"></div>
-            <div class="timeline-content">
-              プログラミング教室を計画中<br>
-              AKATSUKIプロジェクト<br>
-              高専プログラミングコンテスト出場予定
-            </div>
-          </div>
+          <div class="timeline-item"><div class="timeline-date">2010</div><div class="timeline-dot"></div><div class="timeline-content">岡山県岡山市に生まれる</div></div>
+          <div class="timeline-item"><div class="timeline-date">2019</div><div class="timeline-dot"></div><div class="timeline-content">父がやっていた<br>プログラミング講座に通う</div></div>
+          <div class="timeline-item"><div class="timeline-date">2023</div><div class="timeline-dot"></div><div class="timeline-content">空手で全国出場</div></div>
+          <div class="timeline-item"><div class="timeline-date"></div><div class="timeline-dot"></div><div class="timeline-content">起業体験プログラムに参加して<br>自由研究ワークショップを開催</div></div>
+          <div class="timeline-item"><div class="timeline-date"></div><div class="timeline-dot"></div><div class="timeline-content">過去問を共有するアプリ「らくぺん」を開発</div></div>
+          <div class="timeline-item"><div class="timeline-date">2024</div><div class="timeline-dot"></div><div class="timeline-content">岡山の公民館で<br>プログラミング講座を開く</div></div>
+          <div class="timeline-item"><div class="timeline-date">2025</div><div class="timeline-dot"></div><div class="timeline-content">香川高専に入学</div></div>
+          <div class="timeline-item"><div class="timeline-date"></div><div class="timeline-dot"></div><div class="timeline-content">LINE YAHOO HACKU参加<br>朝の時間効率化アプリ「PrepMate」を開発</div></div>
+          <div class="timeline-item"><div class="timeline-date current">現在</div><div class="timeline-dot current"></div><div class="timeline-content">プログラミング教室を計画中<br>AKATSUKIプロジェクト<br>高専プログラミングコンテスト出場予定</div></div>
         </div>
       </div>
     </section>
