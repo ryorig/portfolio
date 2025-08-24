@@ -122,6 +122,50 @@
       font-size: 1.12rem;
       max-width: 600px;
     }
+        .profile-section {
+      background: #f6f8fa;
+      width: 340px;
+      margin: 40px auto;
+      padding: 2rem;
+      border-radius: 18px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 4px 12px rgba(150,170,200,0.08);
+      font-family: 'Segoe UI','Meiryo',sans-serif;
+    }
+    .profile-section img {
+      display: block;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 21px;
+      border: 2px solid #cae6fa;
+      background: #fff;
+    }
+    .profile-section .profile-name {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: #2977c9;
+      margin-bottom: 10px;
+      letter-spacing: 0.1em;
+    }
+    .profile-section .profile-office {
+      text-align: center;
+      font-size: 1.05rem;
+      color: #56a879;
+      margin-bottom: 13px;
+      font-weight: 600;
+    }
+    .profile-section .profile-intro {
+      line-height: 1.8;
+      color: #444;
+      font-size: 1rem;
+      background: #eef4fc;
+      border-radius: 11px;
+      padding: 13px 15px;
+      margin-bottom: 7px;
+    }
     .timeline-section {
       background: #1793d1;
       color: #fff;
@@ -239,12 +283,16 @@
   </nav>
   <div class="main-content">
     <!-- Profile -->
-    <section id="profile" class="main-section">
-      <img src="aboutME.png" alt="Front image" class="profile-image">
-      <div class="profile-desc">
-        岡山県出身のプログラミング愛好家です。2019年に父の影響でプログラミングを始め、現在は香川高専で電子システム工学を学んでいます。ハッカソン参加やプログラミング教室開催など、技術を通じた社会貢献に取り組んでいます。
-      </div>
-    </section>
+  <section class="profile-section">
+    <img src="既存画像URL" alt="中本怜祐のプロフィール画像">
+    <div class="profile-name">中本怜祐</div>
+    <div class="profile-office">屋号: ナカモトリョウスケ</div>
+    <div class="profile-intro">
+      STEAM教育や地域課題のソリューションづくりに奮闘しています。<br>
+      所属: 香川高専電子システム工学科<br>
+      出身: 岡山県
+    </div>
+  </section>
     <!-- About Me -->
     <section id="aboutme" class="main-section timeline-section">
       <div class="timeline-container">
