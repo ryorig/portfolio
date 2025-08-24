@@ -73,38 +73,6 @@
       0% { opacity: 0; }
       100% { opacity: 1; }
     }
-    .start-section {
-      min-height: 60vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 10px 10px 10px;
-    }
-    .start-title {
-      font-size: 2.4rem;
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-align: center;
-      color: #1793d1;
-      margin-bottom: 15px;
-    }
-    .start-sub {
-      font-size: 1.25rem;
-      color: #64748b;
-      text-align: center;
-      margin-bottom: 45px;
-      line-height: 1.6;
-    }
-    .start-image {
-      max-width: 96vw; max-height:55vh; display:block; margin: 0 auto; margin-bottom:30px;
-    }
-    @media (max-width:600px){
-      .start-title {font-size:1.5rem;}
-      .start-sub {font-size:1rem;}
-      .start-section{padding:34px 4px 2px 4px;}
-      .start-image{max-height:30vh;}
-    }
     .profile-image {
       display: block;
       margin: 40px auto 10px auto;
@@ -113,58 +81,23 @@
       width: auto;
       height: auto;
       box-shadow: 0 4px 28px rgba(0,0,0,0.07);
-      border-radius: 0;
+      border-radius: 8px;
       background: none;
     }
     .profile-desc {
-      text-align: center;
-      margin: 30px auto 30px auto;
-      font-size: 1.12rem;
+      text-align: left;
+      margin: 30px auto;
+      font-size: 1.15rem;
       max-width: 600px;
-    }
-        .profile-section {
-      background: #f6f8fa;
-      width: 340px;
-      margin: 40px auto;
-      padding: 2rem;
-      border-radius: 18px;
-      border: 1px solid #e0e0e0;
-      box-shadow: 0 4px 12px rgba(150,170,200,0.08);
-      font-family: 'Segoe UI','Meiryo',sans-serif;
-    }
-    .profile-section img {
-      display: block;
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 21px;
-      border: 2px solid #cae6fa;
-      background: #fff;
-    }
-    .profile-section .profile-name {
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.3rem;
-      color: #2977c9;
-      margin-bottom: 10px;
-      letter-spacing: 0.1em;
-    }
-    .profile-section .profile-office {
-      text-align: center;
-      font-size: 1.05rem;
-      color: #56a879;
-      margin-bottom: 13px;
-      font-weight: 600;
-    }
-    .profile-section .profile-intro {
       line-height: 1.8;
-      color: #444;
-      font-size: 1rem;
-      background: #eef4fc;
-      border-radius: 11px;
-      padding: 13px 15px;
-      margin-bottom: 7px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+      padding: 15px 20px;
+      background: none; /* 背景色なし */
+      border: none;     /* 枠なし */
+      border-radius: 0; /* 角丸なし */
+    }
+    .profile-desc b {
+      color: #1e40af;
     }
     .timeline-section {
       background: #1793d1;
@@ -258,11 +191,6 @@
     }
     .contact-content { font-size: 1.15rem; margin-bottom: 15px;}
     .contact-link { color:#1793d1; word-break:break-all;}
-    @media (max-width: 768px){
-      .main-content{margin-top:70px;}
-      .works-section, .contact-section {padding:18px 7px;}
-      .works-title, .contact-title{font-size:1.14rem;}
-    }
   </style>
 </head>
 <body>
@@ -283,16 +211,16 @@
   </nav>
   <div class="main-content">
     <!-- Profile -->
-  <section class="profile-section">
-    <img src="既存画像URL" alt="中本怜祐のプロフィール画像">
-    <div class="profile-name">中本怜祐</div>
-    <div class="profile-office">屋号: ナカモトリョウスケ</div>
-    <div class="profile-intro">
-      STEAM教育や地域課題のソリューションづくりに奮闘しています。<br>
-      所属: 香川高専電子システム工学科<br>
-      出身: 岡山県
-    </div>
-  </section>
+    <section id="profile" class="main-section">
+      <img src="aboutME.png" alt="Front image" class="profile-image">
+      <div class="profile-desc">
+        <b>名前：</b>中本怜祐<br>
+        <b>屋号：</b>ナカモトリョウスケ<br>
+        <b>活動：</b>STEAM教育や地域課題のソリューションづくりに奮闘しています。<br>
+        <b>所属：</b>香川高専電子システム工学科<br>
+        <b>出身：</b>岡山県
+      </div>
+    </section>
     <!-- About Me -->
     <section id="aboutme" class="main-section timeline-section">
       <div class="timeline-container">
@@ -378,7 +306,6 @@
     </section>
   </div>
   <script>
-    // ハンバーガーメニュー動作
     const navToggle = document.getElementById('nav-toggle');
     const navLinks = document.getElementById('nav-links');
     navToggle.addEventListener('click', () => {
@@ -391,50 +318,35 @@
         navLinks.classList.remove('active');
       });
     });
-
-    // ページ切替ロジック
     const pages = document.querySelectorAll('.main-section');
     const tabs = document.querySelectorAll('.nav-links a');
     const logoBtn = document.getElementById('logo-btn');
-
-    function hideAllPages() {
-      pages.forEach(page => page.classList.remove('active'));
-    }
+    function hideAllPages() { pages.forEach(page => page.classList.remove('active')); }
     function showPage(pageId) {
       hideAllPages();
-      if (pageId === 'startsection') {
-        document.getElementById('startsection').classList.add('active');
-        tabs.forEach(tab => tab.classList.remove('active'));
-      } else {
-        document.getElementById(pageId).classList.add('active');
-        tabs.forEach(tab => tab.classList.remove('active'));
-        document.querySelector('.nav-links a[data-page="' + pageId + '"]').classList.add('active');
-      }
+      document.getElementById(pageId).classList.add('active');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      const targetTab = document.querySelector('.nav-links a[data-page="' + pageId + '"]');
+      if (targetTab) targetTab.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
-
-    // タブクリック → startsectionは絶対に非表示
     tabs.forEach(tab => {
       tab.addEventListener('click', e => {
         e.preventDefault();
         const page = tab.getAttribute('data-page');
-        if (page && page !== 'startsection') showPage(page);
+        if (page) showPage(page);
       });
     });
-
-    // ロゴクリックのみ startsection表示
     logoBtn.addEventListener('click', e => {
       e.preventDefault();
-      showPage('startsection');
+      showPage('profile');
     });
-
-    // 初回ロード時はstartsectionを表示せず、Profile等タブ（またはlocation.hash）を表示
     window.addEventListener('DOMContentLoaded', () => {
       const hash = location.hash.replace('#', '');
-      if (hash && document.getElementById(hash) && hash !== 'startsection') {
+      if (hash && document.getElementById(hash)) {
         showPage(hash);
       } else {
-        showPage('profile'); // defaultページ
+        showPage('profile');
       }
     });
   </script>
