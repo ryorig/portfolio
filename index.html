@@ -80,48 +80,50 @@
       100% { opacity: 1; }
     }
 
-/* Profile セクション横並びレイアウト */
+/* Profile セクション横並びレイアウト *//* Profile 横並びレイアウト */
 #profile {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 40px; /* 画像とテキストの間 */
-  flex-wrap: wrap; /* 小さい画面では自動で縦並び */
-  padding: 40px 20px;
+  gap: 50px; /* 画像とテキストの間隔 */
+  flex-wrap: wrap;
+  padding: 60px 20px;
 }
 
 .profile-image {
-  max-width: 280px;
+  max-width: 340px; /* 画像も大きめ */
   height: auto;
   flex-shrink: 0;
-  box-shadow: none;
   border-radius: 8px;
 }
 
 .profile-desc {
-  text-align: left;
-  font-size: 1.3rem;
-  line-height: 1.9;
-  background: none;
-  border: none;
-  box-shadow: none;
-  max-width: 500px;
+  font-size: 1.6rem;   /* 文字を大きく */
+  line-height: 2.1;
+  max-width: 520px;
+  padding-left: 25px;  /* 棒と文字の間隔 */
+  border-left: 6px solid #1e3a8a; /* 縦棒を追加 */
 }
 .profile-desc b {
   color: #1e3a8a;
   font-weight: 700;
 }
 
+/* スマホ対応 */
 @media (max-width: 768px) {
   #profile {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: column; /* 縦並びに変更 */
+    gap: 20px;
   }
   .profile-desc {
-    text-align: center; /* 小さい画面では中央揃え */
+    border-left: none; /* スマホでは縦棒なし */
+    padding-left: 0;
+    text-align: center;
+    font-size: 1.3rem;
   }
 }
+
 
 
 
