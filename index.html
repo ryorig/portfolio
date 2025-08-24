@@ -80,49 +80,33 @@
       100% { opacity: 1; }
     }
 
-    /* Profile *//* Profile 横並びレイアウト */
-#profile {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 50px; /* 画像とテキストの間隔 */
-  flex-wrap: wrap;
-  padding: 60px 20px;
-}
-
-.profile-image {
-  max-width: 340px; /* 画像も大きめ */
-  height: auto;
-  flex-shrink: 0;
-  border-radius: 8px;
-}
-
-.profile-desc {
-  font-size: 1.6rem;   /* 文字を大きく */
-  line-height: 2.1;
-  max-width: 520px;
-  padding-left: 25px;  /* 棒と文字の間隔 */
-  border-left: 6px solid #1e3a8a; /* 縦棒を追加 */
-}
-.profile-desc b {
-  color: #1e3a8a;
-  font-weight: 700;
-}
-
-/* スマホ対応 */
-@media (max-width: 768px) {
-  #profile {
-    flex-direction: column; /* 縦並びに変更 */
-    gap: 20px;
-  }
-  .profile-desc {
-    border-left: none; /* スマホでは縦棒なし */
-    padding-left: 0;
-    text-align: center;
-    font-size: 1.3rem;
-  }
-}
+    /* Profile */
+    .profile-image {
+      display: block;
+      margin: 40px auto 10px auto;
+      max-width: 98vw;
+      max-height: 65vh;
+      width: auto;
+      height: auto;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.12);
+      border-radius: 8px;
+      background: none;
+    }
+    .profile-desc {
+      text-align: left;
+      margin: 30px auto;
+      font-size: 1.35rem; /* 大きめで上品さを出す */
+      max-width: 680px;
+      line-height: 1.9;
+      box-shadow: 0px 3px 14px rgba(0,0,0,0.15);
+      padding: 18px 24px;
+      background: none;
+      border: none;
+    }
+    .profile-desc b {
+      color: #1e3a8a;
+      font-weight: 700;
+    }
 
     /* Timeline */
     .timeline-section {
@@ -185,17 +169,16 @@
 
   <div class="main-content">
     <!-- Profile -->
-<section id="profile" class="main-section">
-  <img src="aboutME.png" alt="Front image" class="profile-image">
-  <div class="profile-desc">
-    <b>名前：</b>中本怜祐<br>
-    <b>屋号：</b>ナカモトリョウスケ<br>
-    <b>活動：</b>STEAM教育や地域課題のソリューションづくりに奮闘しています。<br>
-    <b>所属：</b>香川高専電子システム工学科<br>
-    <b>出身：</b>岡山県
-  </div>
-</section>
-
+    <section id="profile" class="main-section">
+      <img src="aboutME.png" alt="Front image" class="profile-image">
+      <div class="profile-desc">
+        <b>名前：</b>中本怜祐<br>
+        <b>屋号：</b>ナカモトリョウスケ<br>
+        <b>活動：</b>STEAM教育や地域課題のソリューションづくりに奮闘しています。<br>
+        <b>所属：</b>香川高専電子システム工学科<br>
+        <b>出身：</b>岡山県
+      </div>
+    </section>
 
     <!-- About Me -->
     <section id="aboutme" class="main-section timeline-section">
