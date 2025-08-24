@@ -191,6 +191,16 @@
     }
     .contact-content { font-size: 1.15rem; margin-bottom: 15px;}
     .contact-link { color:#1793d1; word-break:break-all;}
+
+    /* スマホ版（幅600px以下）のときのプロフィール画像縮小 */
+@media (max-width: 600px) {
+  .profile-image {
+    max-width: 85vw;   /* 横幅を画面の85%までに制限 */
+    max-height: 40vh;  /* 高さも縮小して見やすく */
+    margin: 20px auto 10px auto; /* 余白を少し調整 */
+  }
+}
+
   </style>
 </head>
 <body>
