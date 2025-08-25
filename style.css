@@ -132,11 +132,20 @@ nav {
   gap: 1.2rem;
 }
 .work-card {
-  background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
   padding: 1.2em 1em;
   box-shadow: 0 0 6px rgba(0,0,0,0.02);
 }
 .work-card h3 { margin-top: 0; }
+.work-card img {
+  width: 100%;       /* 枠の幅いっぱいに広げる */
+  height: auto;      /* 高さは自動調整で縦横比維持 */
+  object-fit: contain; /* 画像全体を枠内に収める（縦横比は保つが、すきまができる場合あり） */
+  display: block;    /* 画像の下の微細な隙間削除 */
+  border-radius: 8px; /* 必要なら角丸 */
+}
 
 /* contact */
 .contact-section {
