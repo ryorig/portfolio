@@ -155,100 +155,90 @@
       .timeline-dot.current {width:28px;height:43px;}
       .timeline-content {font-size:0.89rem;}
       .timeline::before {left: 72px; width:4px;}
-    }/* Works 全体のレイアウト *//* Works 全体のレイアウト */
-.works-item {
+    }/* Works 全体のレイアウト *//* Worksカードレイアウト全体 */
+.works-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 各カード本体 */
+.works-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(30,64,175,0.09);
+  padding: 24px 18px 22px 18px;
   display: flex;
-  align-items: stretch; /* 縦棒をしっかり全体に伸ばす */
-  gap: 24px;
-  margin-bottom: 40px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-/* 左側の文章部分 */
-.works-info {
-  flex: 1;
-}
-
-/* 縦棒（中央区切り） */
-.works-divider {
-  width: 3px;                  /* 少し太め */
-  background: #4f46e5;          /* 青系で映える */
-  flex-shrink: 0;
-  border-radius: 2px;
-  margin: 0 10px;
-}
-
-/* 右側の画像部分 */
-.works-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
-/* 右側の画像部分 */
-.works-image img {
-  max-width: 320px;     /* 画像の横幅上限を明確に指定 */
-  max-height: 220px;    /* 高さも抑えてバランスよく */
-  width: 100%;          /* 利用可能なスペースに合わせて伸縮 */
-  height: auto;
+
+.works-card:hover {
+  box-shadow: 0 8px 24px rgba(30,64,175,0.17);
+  transform: translateY(-5px) scale(1.03);
+}
+
+/* 画像 */
+.works-card-image {
+  width: 100%;
+  max-width: 220px;
+  max-height: 140px;
+  object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  object-fit: contain;  /* はみ出さず収める */
+  margin-bottom: 18px;
+  box-shadow: 0 2px 9px rgba(0,0,0,0.10);
 }
-
-/* スマホ対応で画像をもう少し小さく */
-@media (max-width: 700px) {
-  .works-image img {
-    max-width: 95vw;
-    max-height: 160px;
-    margin-bottom: 12px;
-  }
-}
-
 
 /* タイトル・説明 */
 .works-item-title {
+  font-size: 1.2rem;
   font-weight: bold;
-  font-size: 1.5rem;   /* タイトル大きめ */
   color: #1e293b;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+  text-align: center;
 }
 
 .works-tech {
-  display: block;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 0.95rem;
   color: #4f46e5;
-  margin: 6px 0 14px;
+  margin-bottom: 12px;
+  display: block;
+  text-align: center;
 }
 
 .works-desc {
-  font-size: 1.15rem;   /* 説明も大きめに */
-  line-height: 1.8;
   color: #334155;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  text-align: center;
+  margin-bottom: 2px;
 }
 
 /* スマホ対応 */
-@media (max-width: 700px) {
-  .works-item {
-    flex-direction: column;
-    align-items: flex-start;
+@media (max-width: 600px) {
+  .works-list {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
-  .works-divider {
-    display: none; /* スマホでは消す */
+  .works-card {
+    padding: 18px 6vw 18px 6vw;
   }
-  .works-image {
-    width: 100%;
-    margin-top: 15px;
+  .works-card-image {
+    max-width: 90vw;
+    max-height: 120px;
   }
   .works-item-title {
-    font-size: 1.3rem;
+    font-size: 1.07rem;
   }
   .works-desc {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 }
+
 
     .contact-title {
       font-size: 1.5rem; margin-bottom: 18px; color:#1e293b; font-weight: bold;
@@ -343,39 +333,29 @@
         </div>
       </div>
     </section>
-    <!-- Works -->
-<section id="works" class="main-section works-section">
+    <!-- Works --><section id="works" class="main-section works-section">
   <div class="works-title">Works</div>
-
-  <div class="works-item">
-    <div class="works-info">
+  <ul class="works-list">
+    <li class="works-card">
+      <img src="rakupen.png" alt="らくぺんの画像" class="works-card-image">
       <div class="works-item-title">らくぺん</div>
       <span class="works-tech">Flutter / Dart / Firebase</span>
       <div class="works-desc">
         過去問を共有する学習アプリ。学生同士で効率的な学びを実現。
       </div>
-    </div>
-    <div class="works-divider"></div>
-    <div class="works-image">
-      <img src="rakuben.jpg" alt="らくぺんの画像">
-    </div>
-  </div>
-
-  <div class="works-item">
-    <div class="works-info">
+    </li>
+    <li class="works-card">
+      <img src="prepmate.png" alt="PrepMateの画像" class="works-card-image">
       <div class="works-item-title">PrepMate</div>
       <span class="works-tech">React / TypeScript / Node.js</span>
       <div class="works-desc">
         朝の準備を効率化するアプリ。LINE YAHOO HACKUで開発。
       </div>
-    </div>
-    <div class="works-divider"></div>
-    <div class="works-image">
-      <img src="prepmate.jpg" alt="PrepMateの画像">
-    </div>
-  </div>
-
+    </li>
+    <!-- 追加の作品も同じ形式でOK -->
+  </ul>
 </section>
+
 
     <!-- Contact -->
     <section id="contact" class="main-section contact-section">
