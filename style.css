@@ -225,3 +225,14 @@ nav {
       .timeline-content {font-size:0.89rem;}
       .timeline::before {left: 72px; width:4px;}
     }
+
+@media (max-width: 680px) {
+  .circle-animation-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+  .ryosuke-img {
+    width: 180px;
+    height: 180px;
+  }
+}
