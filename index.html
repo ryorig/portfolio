@@ -1,291 +1,48 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RYOSUKE NAKAMOTO</title>
-  <style>
-    body {
-      background: #f8fafc;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #333;
-      margin: 0;
-      min-height: 100vh;
-    }
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      background: rgba(255,255,255,0.95);
-      border-bottom: 1px solid #e2e8f0;
-      z-index: 1000; backdrop-filter: blur(10px); padding: 15px 0;
-    }
-    .nav-container {
-      max-width: 1200px; margin: 0 auto; padding: 0 20px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .nav-logo { font-size: 1.5rem; font-weight: bold; color: black; text-decoration: none; cursor: pointer; }
-    .nav-toggle { display: none; flex-direction: column; cursor: pointer; padding: 5px; }
-    .nav-toggle span { width: 25px; height: 3px; background: #4f46e5; margin: 3px 0; border-radius: 2px; transition: .3s;}
-    .nav-toggle.active span:nth-child(1) {transform: rotate(-45deg) translate(-5px,6px);}
-    .nav-toggle.active span:nth-child(2) {opacity:0;}
-    .nav-toggle.active span:nth-child(3) {transform: rotate(45deg) translate(-5px,-6px);}
-    .nav-links { display: flex; list-style: none; gap: 30px; }
-    .nav-links a {
-      text-decoration: none;
-      color: #64748b;
-      font-weight: 500;
-      padding: 5px 0;
-      border-bottom: 2px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-      cursor: pointer;
-    }
-    .nav-links a.active {
-      color: #4f46e5;
-      border-bottom: 2px solid #4f46e5;
-      pointer-events: none;
-    }
-    .nav-links a:hover { color: #4f46e5; }
-    @media (max-width: 768px) {
-      .nav-container { padding: 0 15px; }
-      .nav-toggle { display: flex; }
-      .nav-links {
-        position: fixed; top:70px; right:-100%;
-        width: 220px; height: calc(100vh - 70px);
-        background: rgba(255,255,255,0.99);
-        flex-direction: column; align-items: center; gap: 30px;
-        transition: right .3s; border-left:1px solid #e2e8f0;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.05);
-      }
-      .nav-links.active { right: 0; }
-    }
-    .main-content {
-      margin-top: 80px;
-      min-height: 80vh;
-      transition: background 0.2s;
-    }
-    .main-section {
-      display: none;
-      animation: fadein .4s;
-    }
-    .main-section.active {
-      display: block;
-    }
-    @keyframes fadein {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    .profile-image {
-      display: block;
-      margin: 40px auto 10px auto;
-      max-width: 98vw;
-      max-height: 65vh;
-      width: auto;
-      height: auto;
-      box-shadow: 0 4px 28px rgba(0,0,0,0.07);
-      border-radius: 8px;
-      background: none;
-    }
-    .profile-desc {
-      text-align: left;
-      margin: 30px auto;
-      font-size: 1.15rem;
-      max-width: 600px;
-      line-height: 1.8;
-      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-      padding: 15px 20px;
-      background: none; /* 背景色なし */
-      border: none;     /* 枠なし */
-      border-radius: 0; /* 角丸なし */
-    }
-    .profile-desc b {
-      color: #1e40af;
-    }
-    .timeline-section {
-      background: #1793d1;
-      color: #fff;
-      border-radius: 0 !important;
-      padding: 35px 0 0 0;
-      margin-bottom: 0;
-      position: relative;
-      overflow-x: auto;
-      box-shadow: none;
-    }
-    .timeline-container {
-      max-width: 700px;
-      margin: 0 auto; padding: 0 10px; position: relative;
-    }
-    .timeline-title {
-      color: #fff; text-align: center; margin-bottom: 32px;
-      font-size: 2rem; letter-spacing:1px; font-weight:700;
-    }
-    .timeline {
-      position: relative; width:100%; margin-top:15px;
-    }
-    .timeline::before {
-      content: "";
-      position: absolute; left: 120px; top: 0;
-      width: 8px; height: 100%;
-      background: #fff;
-      border-radius: 6px;
-      z-index: 1;
-    }
-    .timeline-item {
-      display: flex; align-items: flex-start; margin-bottom: 48px; min-height: 48px; position: relative;
-    }
-    .timeline-date {
-      width: 110px; text-align: right; font-size: 1.18rem; font-family: inherit; letter-spacing: 1px;
-      line-height: 1.5; font-weight: bold; flex-shrink: 0;
-    }
-    .timeline-dot {
-      width: 38px; min-width: 38px; height: 38px; background: #fff;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      position: relative; z-index: 2; margin: 0 18px; border: none;
-    }
-    .timeline-dot.current {
-      width: 46px; height: 62px; border-radius: 23px; margin: 0 14px; background: #fff;
-    }
-    .timeline-date.current { font-size: 1.45rem; color:#fff; font-weight:800; letter-spacing:1px;}
-    .timeline-content { font-size: 1.12rem; line-height: 1.7; white-space: pre-line; margin-top: 2px; font-weight: 400;}
-    .timeline-item:last-child .timeline-content { font-weight:500; font-size:1.12rem;}
-    @media (max-width: 600px) {
-      .timeline-section {padding:10px 0 0 0; border-radius:0;}
-      .timeline-container {padding:5px;}
-      .timeline-title {font-size:1.12rem;}
-      .timeline-date {width:55px; font-size:0.98rem;}
-      .timeline-dot {width:22px;height:22px;min-width:22px;margin:0 8px;}
-      .timeline-dot.current {width:28px;height:43px;}
-      .timeline-content {font-size:0.89rem;}
-      .timeline::before {left: 72px; width:4px;}
-    }/* Works 全体のレイアウト *//* Worksカードレイアウト全体 */
-.works-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* 各カード本体 */
-.works-card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 18px rgba(30,64,175,0.09);
-  padding: 24px 18px 22px 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-
-.works-card:hover {
-  box-shadow: 0 8px 24px rgba(30,64,175,0.17);
-  transform: translateY(-5px) scale(1.03);
-  padding: 10px
-}
-
-/* 画像 */
-.works-card-image {
-  width: 100%;
-  max-width: 220px;
-  max-height: 140px;
-  object-fit: contain;
-  border-radius: 8px;
-  margin-bottom: 18px;
-  box-shadow: 0 2px 9px rgba(0,0,0,0.10);
-}
-
-.works-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #334155;
-  margin-bottom: 4px;
-  text-align: left;
-  padding: 10px
-}
-/* タイトル・説明 */
-.works-item-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #1e293b;
-  margin-bottom: 4px;
-  text-align: center;
-}
-
-.works-tech {
-  font-size: 0.95rem;
-  color: #4f46e5;
-  margin-bottom: 12px;
-  display: block;
-  text-align: center;
-}
-
-.works-desc {
-  color: #334155;
-  font-size: 0.98rem;
-  line-height: 1.7;
-  text-align: center;
-  margin-bottom: 2px;
-}
-
-/* スマホ対応 */
-@media (max-width: 600px) {
-  .works-list {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-  .works-card {
-    padding: 18px 6vw 18px 6vw;
-  }
-  .works-card-image {
-    max-width: 90vw;
-    max-height: 120px;
-  }
-  .works-item-title {
-    font-size: 1.07rem;
-  }
-  .works-desc {
-    font-size: 0.95rem;
-  }
-}
-
-
-    .contact-title {
-      font-size: 1.5rem; margin-bottom: 18px; color:#1e293b; font-weight: bold;
-      border-left: 4px solid #4f46e5; padding-left:10px; text-align:left; display:inline-block;
-    }
-    .contact-content { font-size: 1.15rem; margin-bottom: 15px;}
-    .contact-link { color:#1793d1; word-break:break-all;}
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>NAKAMOTO RYOSUKE</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ナビバー & タブ -->
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="#" class="nav-logo" id="logo-btn">RYOSUKE</a>
-      <div class="nav-toggle" id="nav-toggle">
+  <header>
+    <nav>
+      <div class="nav-logo">NAKAMOTO</div>
+      <button class="nav-toggle" aria-label="メニューを開く">
         <span></span><span></span><span></span>
-      </div>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#profile" data-page="profile" class="active">Profile</a></li>
-        <li><a href="#aboutme" data-page="aboutme">About Me</a></li>
-        <li><a href="#works" data-page="works">Works</a></li>
-        <li><a href="#contact" data-page="contact">Contact</a></li>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#ryosuke">RYOSUKE</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-    </div>
-  </nav>
-  <div class="main-content">
-    <!-- Profile -->
-    <section id="profile" class="main-section">
-      <img src="aboutME.png" alt="Front image" class="profile-image">
-      <div class="profile-desc">
-        <b>名前：</b>中本怜祐<br>
-        <b>屋号：</b>ナカモトリョウスケ<br>
-        <b>活動：</b>STEAM教育や地域課題のソリューションづくりに奮闘しています。<br>
-        <b>所属：</b>香川高専電子システム工学科<br>
-        <b>出身：</b>岡山県
-      </div>
-    </section>
-    <!-- About Me -->
+    </nav>
+  </header>
+
+  <main>
+<section id="ryosuke" class="centered">
+  <div class="circle-animation-wrapper">
+    <img src="ME.png" alt="about me" class="ryosuke-img" id="rotatingImage">
+  </div>
+</section>
+
+<section id="profile" class="profile-section">
+  <div class="profile-img-container">
+    <img src="trueMe.jpg" alt="profile image" class="profile-img">
+  </div>
+  <div class="profile-info">
+    <p>名前：中本怜祐</p>
+    <p>屋号：ナカモトリョウスケ</p>
+    <p>活動：STEAM教育や地域課題のソリューションづくりに奮闘しています。</p>
+    <p>所属：香川高専電子システム工学科</p>
+    <p>出身：岡山県</p>
+  </div>
+</section>
+
     <section id="aboutme" class="main-section timeline-section">
       <div class="timeline-container">
         <div class="timeline-title">About Me</div>
@@ -342,84 +99,23 @@
         </div>
       </div>
     </section>
-    <!-- Works -->
-  <section id="works" class="main-section works-section">
-  <div class="works-title">Works</div>
-  <ul class="works-list">
-    <li class="works-card">
-      <img src="rakuben.jpg" alt="らくぺんの画像" class="works-card-image">
-      <div class="works-item-title">らくべん</div>
-      <div class="works-desc">
-        過去問を共有する学習アプリ。学生同士で効率的な学びを実現。
-      </div>
-    </li>
-    <li class="works-card">
-      <img src="prepmate.jpg" alt="PrepMateの画像" class="works-card-image">
-      <div class="works-item-title">PrepMate</div>
-      <div class="works-desc">
-        朝の準備を効率化するアプリ。LINE YAHOO HACKUで開発。
-      </div>
-    </li>
-    <!-- 追加の作品も同じ形式でOK -->
-  </ul>
-</section>
 
 
-    <!-- Contact -->
-    <section id="contact" class="main-section contact-section">
-      <div class="contact-title">Contact</div>
-      <div class="contact-content">
-        メール：<a href="mailto:nakamotoryoke@gmail.com" class="contact-link">nakamotoryoke@gmail.com</a>
-      </div>
-      <div class="contact-content">
-        GitHub：<a href="https://github.com/ryorig" target="_blank" class="contact-link">ryorig</a>
+    <section id="works" class="works-section">
+      <div class="work-card-list">
+        <div class="work-card">
+          <h3>サンプル実績</h3>
+          <p>ここに実績内容の説明が入ります。</p>
+        </div>
       </div>
     </section>
-  </div>
-  <script>
-    const navToggle = document.getElementById('nav-toggle');
-    const navLinks = document.getElementById('nav-links');
-    navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('active');
-      navLinks.classList.toggle('active');
-    });
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-      });
-    });
-    const pages = document.querySelectorAll('.main-section');
-    const tabs = document.querySelectorAll('.nav-links a');
-    const logoBtn = document.getElementById('logo-btn');
-    function hideAllPages() { pages.forEach(page => page.classList.remove('active')); }
-    function showPage(pageId) {
-      hideAllPages();
-      document.getElementById(pageId).classList.add('active');
-      tabs.forEach(tab => tab.classList.remove('active'));
-      const targetTab = document.querySelector('.nav-links a[data-page="' + pageId + '"]');
-      if (targetTab) targetTab.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'instant' });
-    }
-    tabs.forEach(tab => {
-      tab.addEventListener('click', e => {
-        e.preventDefault();
-        const page = tab.getAttribute('data-page');
-        if (page) showPage(page);
-      });
-    });
-    logoBtn.addEventListener('click', e => {
-      e.preventDefault();
-      showPage('profile');
-    });
-    window.addEventListener('DOMContentLoaded', () => {
-      const hash = location.hash.replace('#', '');
-      if (hash && document.getElementById(hash)) {
-        showPage(hash);
-      } else {
-        showPage('profile');
-      }
-    });
-  </script>
+
+    <section id="contact" class="contact-section">
+      <div class="contact-content">
+        <p>メール: <a href="mailto:nakamotoryoke@gmail.com">nakamotoryoke@gmail.com</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="main.js"></script>
 </body>
 </html>
