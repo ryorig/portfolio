@@ -1,0 +1,227 @@
+:root {
+  --main-bg: #fafafa;
+  --main-txt: #232323;
+  --sub-bg: #f1f1f3;
+  --card-bg: #ffffff;
+  --border: #e0e0e0;
+  --accent: #767676;
+}
+html, body {
+  margin: 0; padding: 0; box-sizing: border-box;
+  background: var(--main-bg);
+  color: var(--main-txt);
+  font-family: 'Yu Gothic', YuGothic, 'Hiragino Sans', Meiryo, sans-serif;
+}
+
+header {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+}
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 900px; margin: 0 auto; padding: 0.5rem 1rem;
+}
+.nav-logo {
+  font-weight: bold; letter-spacing: 1px;
+}
+.nav-links {
+  list-style: none; display: flex; margin: 0; padding: 0;
+}
+.nav-links li { margin-left: 1.2rem; }
+.nav-links a { text-decoration: none; color: var(--main-txt); font-weight: 500; }
+.nav-toggle {
+  display: none; flex-direction: column; border: none; background: none; cursor: pointer;
+}
+.nav-toggle span {
+  width: 28px; height: 3px; background: var(--accent); margin: 5px 0; border-radius: 2px;
+}
+
+.centered {
+  min-height: 60vh; display: flex; justify-content: center; align-items: center;
+}.circle-animation-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.ryosuke-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease;
+}
+
+
+.profile-section {
+  display: flex;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem 2rem 2rem 2rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.03);
+  align-items: center;
+}
+
+.profile-img-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.profile-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: var(--sub-bg);
+  border: none; /* 枠を消す */
+}
+
+
+.about-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease;
+}
+
+.circle-text {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+
+.profile-img {
+  width: 140px; height: 140px; object-fit: cover; border-radius: 50%; background: var(--sub-bg); border:none;
+}
+.profile-info { flex: 3; }
+.profile-info p { margin: 0.5em 0; }
+
+.about-section {
+  min-height: 320px;
+  background: var(--sub-bg);
+  margin: 2rem auto;
+  max-width: 850px;
+  border-radius: 10px;
+}
+
+.works-section {
+  padding: 2rem 0; max-width: 1000px; margin: 0 auto;
+}
+.work-card-list {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.2rem;
+}
+.work-card {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.2em 1em;
+  box-shadow: 0 0 6px rgba(0,0,0,0.02);
+}
+.work-card h3 { margin-top: 0; }
+
+/* contact */
+.contact-section {
+  padding: 2rem 0; background: var(--sub-bg); min-height: 180px;
+}
+.contact-content {
+  max-width: 620px; margin: 0 auto; background: var(--card-bg);
+  border-radius: 10px; padding: 2.5rem 1rem;
+  box-shadow: 0 0 6px rgba(0,0,0,0.01);
+}
+.contact-content p { margin: 0; font-size: 1.12em; }
+
+/* Responsive */
+@media (max-width: 780px) {
+  nav { flex-direction: row; }
+  .nav-links { display: none; flex-direction: column; background: var(--card-bg); position: absolute; top: 48px; right: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.13); border-radius: 8px;}
+  .nav-links.active { display: flex; }
+  .nav-links li { margin: 1.5em 2em 1.5em 1em; }
+  .nav-toggle { display: flex; z-index: 1001; }
+}
+
+@media (max-width: 680px) {
+  .centered { min-height: 50vh;}
+  .profile-section { flex-direction: column; gap: 1rem; padding: 1rem; align-items: stretch;}
+  .profile-img-container, .profile-info { width: 100%; text-align: center; }
+  .about-img { width: 140px; height: 140px;}
+  .circle-animation-wrapper { width: 180px; height: 180px;}
+  .circle-text { width: 180px; height: 180px;}
+  .about-section { min-height: 180px;}
+}
+
+    .timeline-section {
+      background: #1793d1;
+      color: #fff;
+      border-radius: 0 !important;
+      padding: 35px 0 0 0;
+      margin-bottom: 0;
+      position: relative;
+      overflow-x: auto;
+      box-shadow: none;
+    }
+    .timeline-container {
+      max-width: 700px;
+      margin: 0 auto; padding: 0 10px; position: relative;
+    }
+    .timeline-title {
+      color: #fff; text-align: center; margin-bottom: 32px;
+      font-size: 2rem; letter-spacing:1px; font-weight:700;
+    }
+    .timeline {
+      position: relative; width:100%; margin-top:15px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute; left: 120px; top: 0;
+      width: 8px; height: 100%;
+      background: #fff;
+      border-radius: 6px;
+      z-index: 1;
+    }
+    .timeline-item {
+      display: flex; align-items: flex-start; margin-bottom: 48px; min-height: 48px; position: relative;
+    }
+    .timeline-date {
+      width: 110px; text-align: right; font-size: 1.18rem; font-family: inherit; letter-spacing: 1px;
+      line-height: 1.5; font-weight: bold; flex-shrink: 0;
+    }
+    .timeline-dot {
+      width: 38px; min-width: 38px; height: 38px; background: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 2; margin: 0 18px; border: none;
+    }
+    .timeline-dot.current {
+      width: 46px; height: 62px; border-radius: 23px; margin: 0 14px; background: #fff;
+    }
+    .timeline-date.current { font-size: 1.45rem; color:#fff; font-weight:800; letter-spacing:1px;}
+    .timeline-content { font-size: 1.12rem; line-height: 1.7; white-space: pre-line; margin-top: 2px; font-weight: 400;}
+    .timeline-item:last-child .timeline-content { font-weight:500; font-size:1.12rem;}
+    @media (max-width: 600px) {
+      .timeline-section {padding:10px 0 0 0; border-radius:0;}
+      .timeline-container {padding:5px;}
+      .timeline-title {font-size:1.12rem;}
+      .timeline-date {width:55px; font-size:0.98rem;}
+      .timeline-dot {width:22px;height:22px;min-width:22px;margin:0 8px;}
+      .timeline-dot.current {width:28px;height:43px;}
+      .timeline-content {font-size:0.89rem;}
+      .timeline::before {left: 72px; width:4px;}
+    }
