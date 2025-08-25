@@ -155,75 +155,83 @@
       .timeline-dot.current {width:28px;height:43px;}
       .timeline-content {font-size:0.89rem;}
       .timeline::before {left: 72px; width:4px;}
-    }/* Works 全体のレイアウト */
+    }/* Works 全体のレイアウト *//* Works 全体のレイアウト */
 .works-item {
   display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 32px;
+  align-items: stretch; /* 縦棒をしっかり全体に伸ばす */
+  gap: 24px;
+  margin-bottom: 40px;
   padding-bottom: 20px;
   border-bottom: 1px solid #e5e7eb;
 }
 
 /* 左側の文章部分 */
 .works-info {
-  flex: 1; /* 左側を可変に */
+  flex: 1;
 }
 
-/* 縦棒（区切り） */
+/* 縦棒（中央区切り） */
 .works-divider {
-  width: 2px;
-  background: #d1d5db;
+  width: 3px;                  /* 少し太め */
+  background: #4f46e5;          /* 青系で映える */
   flex-shrink: 0;
-  height: 100%;
   border-radius: 2px;
+  margin: 0 10px;
 }
 
 /* 右側の画像部分 */
 .works-image {
-  flex: 1; /* 同じくらいの幅にする */
+  flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
-
 .works-image img {
   max-width: 95%;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 /* タイトル・説明 */
 .works-item-title {
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.5rem;   /* タイトル大きめ */
   color: #1e293b;
+  margin-bottom: 8px;
 }
 
 .works-tech {
   display: block;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: #4f46e5;
-  margin: 4px 0 8px;
+  margin: 6px 0 14px;
 }
 
 .works-desc {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 1.15rem;   /* 説明も大きめに */
+  line-height: 1.8;
   color: #334155;
 }
 
-/* スマホ対応：縦並びにして画像を下に */
+/* スマホ対応 */
 @media (max-width: 700px) {
   .works-item {
     flex-direction: column;
     align-items: flex-start;
   }
   .works-divider {
-    display: none; /* スマホでは縦棒を消す */
+    display: none; /* スマホでは消す */
   }
   .works-image {
     width: 100%;
     margin-top: 15px;
+  }
+  .works-item-title {
+    font-size: 1.3rem;
+  }
+  .works-desc {
+    font-size: 1rem;
   }
 }
 
