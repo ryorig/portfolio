@@ -186,11 +186,26 @@
   justify-content: center;
   align-items: center;
 }
+/* 右側の画像部分 */
 .works-image img {
-  max-width: 95%;
+  max-width: 320px;     /* 画像の横幅上限を明確に指定 */
+  max-height: 220px;    /* 高さも抑えてバランスよく */
+  width: 100%;          /* 利用可能なスペースに合わせて伸縮 */
+  height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  object-fit: contain;  /* はみ出さず収める */
 }
+
+/* スマホ対応で画像をもう少し小さく */
+@media (max-width: 700px) {
+  .works-image img {
+    max-width: 95vw;
+    max-height: 160px;
+    margin-bottom: 12px;
+  }
+}
+
 
 /* タイトル・説明 */
 .works-item-title {
