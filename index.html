@@ -95,9 +95,7 @@
       background: none; /* 背景色なし */
       border: none;     /* 枠なし */
       border-radius: 0; /* 角丸なし */
-      border-left: 6px solid #1793d1
     }
-    @media (
     .profile-desc b {
       color: #1e40af;
     }
@@ -193,59 +191,6 @@
     }
     .contact-content { font-size: 1.15rem; margin-bottom: 15px;}
     .contact-link { color:#1793d1; word-break:break-all;}
-
-    /* スマホ版（幅600px以下）のときのプロフィール画像縮小 */
-@media (max-width: 600px) {
-  .profile-image {
-    max-width: 85vw;   /* 横幅を画面の85%までに制限 */
-    max-height: 40vh;  /* 高さも縮小して見やすく */
-    margin: 20px auto 10px auto; /* 余白を少し調整 */
-  }
-}
-
-    /* Works カードレイアウト */
-.works-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.works-card {
-  background: #fdfdfd;
-  border-radius: 10px;
-  padding: 18px 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.works-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-}
-
-.works-item-title {
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #1e293b;
-}
-
-.works-tech {
-  font-size: 0.9rem;
-  color: #4f46e5;
-  margin-left: 6px;
-}
-
-.works-desc {
-  margin-top: 8px;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #334155;
-}
-
-
   </style>
 </head>
 <body>
@@ -304,7 +249,7 @@
           <div class="timeline-item">
             <div class="timeline-date"></div>
             <div class="timeline-dot"></div>
-            <div class="timeline-content">過去問を共有するアプリ「らくべん」を開発</div>
+            <div class="timeline-content">過去問を共有するアプリ「らくぺん」を開発</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-date">2024</div>
@@ -334,24 +279,21 @@
       </div>
     </section>
     <!-- Works -->
-<section id="works" class="main-section works-section">
-  <div class="works-title">Works</div>
-  <ul class="works-list">
-    <li class="works-card">
-      <div class="works-item-title">らくべん</div>
-      <div class="works-desc">
-        過去問を共有する学習アプリ。学生同士で効率的な学びを実現。中学二年生のころに自分の成績を上げるために開発。
-      </div>
-    </li>
-    <li class="works-card">
-      <div class="works-item-title">PrepMate</div>
-      <div class="works-desc">
-        朝の準備を効率化するアプリ。LINE YAHOO HACKUに参加して開発。
-      </div>
-    </li>
-  </ul>
-</section>
-
+    <section id="works" class="main-section works-section">
+      <div class="works-title">Works</div>
+      <ul class="works-list">
+        <li>
+          <span class="works-item-title">らくぺん</span>
+          <span class="works-tech">Flutter / Dart / Firebase</span><br>
+          過去問を共有する学習アプリ。学生同士で効率的な学びを実現。
+        </li>
+        <li>
+          <span class="works-item-title">PrepMate</span>
+          <span class="works-tech">React / TypeScript / Node.js</span><br>
+          朝の準備を効率化するアプリ。LINE YAHOO HACKKUで開発。
+        </li>
+      </ul>
+    </section>
     <!-- Contact -->
     <section id="contact" class="main-section contact-section">
       <div class="contact-title">Contact</div>
