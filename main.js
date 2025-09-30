@@ -1,12 +1,17 @@
 const img = document.getElementById("rotatingImage");
 let angle = 0;
-if (img) {
-  setInterval(() => {
-    angle = (angle + 1) % 360;
-    img.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
-  }, 30);
-}
 
+if (img) {
+  img.style.willChange = 'transform';
+  
+  function rotate() {
+    angle = (angle + 0.5) % 360; // 0.5度ずつ回転（より滑らか）
+    img.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+    requestAnimationFrame(rotate);
+  }
+  
+  rotate();
+}
 
 // ハンバーガーメニュー
 const navToggle = document.querySelector('.nav-toggle');
