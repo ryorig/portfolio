@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>NAKAMOTO RYOSUKE</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -26,13 +26,13 @@
   <main>
     <section id="ryosuke" class="centered">
       <div class="circle-animation-wrapper">
-        <img src="ME.png" alt="about me" class="ryosuke-img" id="rotatingImage">
+        <img src="ME.png" alt="about me" class="ryosuke-img" id="rotatingImage" />
       </div>
     </section>
 
     <section id="profile" class="profile-section">
       <div class="profile-img-container">
-        <img src="trueMe.jpg" alt="profile image" class="profile-img">
+        <img src="trueMe.jpg" alt="profile image" class="profile-img" />
       </div>
       <div class="profile-info">
         <p>名前：中本怜祐</p>
@@ -55,7 +55,7 @@
           <div class="timeline-item">
             <div class="timeline-date">2019</div>
             <div class="timeline-dot"></div>
-            <div class="timeline-content">父がやっていた<br>プログラミング講座に通う</div>
+            <div class="timeline-content">父がやっていた<br />プログラミング講座に通う</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-date">2023</div>
@@ -65,7 +65,7 @@
           <div class="timeline-item">
             <div class="timeline-date"></div>
             <div class="timeline-dot"></div>
-            <div class="timeline-content">起業体験プログラムに参加して<br>自由研究ワークショップを開催</div>
+            <div class="timeline-content">起業体験プログラムに参加して<br />自由研究ワークショップを開催</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-date"></div>
@@ -75,7 +75,7 @@
           <div class="timeline-item">
             <div class="timeline-date">2024</div>
             <div class="timeline-dot"></div>
-            <div class="timeline-content">岡山の公民館で<br>プログラミング講座を開く</div>
+            <div class="timeline-content">岡山の公民館で<br />プログラミング講座を開く</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-date">2025</div>
@@ -85,15 +85,15 @@
           <div class="timeline-item">
             <div class="timeline-date"></div>
             <div class="timeline-dot"></div>
-            <div class="timeline-content">LINE YAHOO HACKU参加<br>朝の時間効率化アプリ「PrepMate」を開発</div>
+            <div class="timeline-content">LINE YAHOO HACKU参加<br />朝の時間効率化アプリ「PrepMate」を開発</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-date current">現在</div>
             <div class="timeline-dot current"></div>
             <div class="timeline-content">
-              プログラミング教室を運営中<br>
-              AKATSUKIプロジェクトに採択<br>
-              100万円の資金をもとに活動しています。<br>
+              プログラミング教室を運営中<br />
+              AKATSUKIプロジェクトに採択<br />
+              100万円の資金をもとに活動しています。<br />
               高専プログラミングコンテスト競技部門出場
             </div>
           </div>
@@ -103,37 +103,80 @@
 
     <section id="works" class="works-section">
       <div class="carousel">
-        <!-- ラジオボタン（スライド切替用、非表示） -->
-        <input type="radio" name="carousel" id="slide1" checked hidden>
-        <input type="radio" name="carousel" id="slide2" hidden>
-        <input type="radio" name="carousel" id="slide3" hidden>
-        <input type="radio" name="carousel" id="slide4" hidden>
+        <!-- ラジオボタン（外部カルーセルのスライド切替用、非表示） -->
+        <input type="radio" name="carousel" id="slide1" checked hidden />
+        <input type="radio" name="carousel" id="slide2" hidden />
+        <input type="radio" name="carousel" id="slide3" hidden />
+        <input type="radio" name="carousel" id="slide4" hidden />
 
         <!-- スライダー本体 -->
         <div class="carousel-track">
+          <!-- ワークカード1 -->
           <div class="work-card">
-            <img src="rakuben.jpg" alt="らくべん">
+            <div class="inner-carousel">
+              <input type="radio" name="work1" id="work1-slide1" checked hidden />
+              <input type="radio" name="work1" id="work1-slide2" hidden />
+              <div class="inner-carousel-track">
+                <img src="rakuben1.jpg" alt="らくべん1" />
+                <img src="rakuben2.jpg" alt="らくべん2" />
+              </div>
+              <label for="work1-slide1" class="inner-prev">&#10094;</label>
+              <label for="work1-slide2" class="inner-next">&#10095;</label>
+            </div>
             <h3>らくべん</h3>
             <p>中学二年生の時に過去問を共有するアプリを作成。</p>
           </div>
+
+          <!-- ワークカード2 -->
           <div class="work-card">
-            <img src="kigyotaiken.jpg" alt="自由研究ワークショップ">
+            <div class="inner-carousel">
+              <input type="radio" name="work2" id="work2-slide1" checked hidden />
+              <input type="radio" name="work2" id="work2-slide2" hidden />
+              <div class="inner-carousel-track">
+                <img src="kigyotaiken1.jpg" alt="自由研究ワークショップ1" />
+                <img src="kigyotaiken2.jpg" alt="自由研究ワークショップ2" />
+              </div>
+              <label for="work2-slide1" class="inner-prev">&#10094;</label>
+              <label for="work2-slide2" class="inner-next">&#10095;</label>
+            </div>
             <h3>自由研究ワークショップ</h3>
-            <p>中学二年生の時に岡山の起業体験プログラムに参加。地元の公民館で小学生向けのワークショップを実施。</p>
+            <p>岡山の起業体験プログラムに参加し、地元の公民館で小学生向けのワークショップを実施。</p>
           </div>
+
+          <!-- ワークカード3 -->
           <div class="work-card">
-            <img src="programingschool.jpg" alt="プログラミング講座">
+            <div class="inner-carousel">
+              <input type="radio" name="work3" id="work3-slide1" checked hidden />
+              <input type="radio" name="work3" id="work3-slide2" hidden />
+              <div class="inner-carousel-track">
+                <img src="programingschool1.jpg" alt="プログラミング講座1" />
+                <img src="programingschool2.jpg" alt="プログラミング講座2" />
+              </div>
+              <label for="work3-slide1" class="inner-prev">&#10094;</label>
+              <label for="work3-slide2" class="inner-next">&#10095;</label>
+            </div>
             <h3>プログラミング講座</h3>
             <p>岡山で小中学生向けのプログラミング講座を継続的に実施。</p>
           </div>
+
+          <!-- ワークカード4 -->
           <div class="work-card">
-            <img src="prepmate.jpg" alt="PrepMate">
+            <div class="inner-carousel">
+              <input type="radio" name="work4" id="work4-slide1" checked hidden />
+              <input type="radio" name="work4" id="work4-slide2" hidden />
+              <div class="inner-carousel-track">
+                <img src="prepmate1.jpg" alt="PrepMate1" />
+                <img src="prepmate2.jpg" alt="PrepMate2" />
+              </div>
+              <label for="work4-slide1" class="inner-prev">&#10094;</label>
+              <label for="work4-slide2" class="inner-next">&#10095;</label>
+            </div>
             <h3>PrepMate</h3>
             <p>LINE HAHOO HACKUで開発したコーディネートアプリ。</p>
           </div>
         </div>
 
-        <!-- 前後ボタン -->
+        <!-- 外部カルーセル操作用ボタン -->
         <label for="slide4" class="carousel-btn prev">&#10094;</label>
         <label for="slide2" class="carousel-btn next">&#10095;</label>
 
@@ -153,7 +196,11 @@
         <p>メール: <a href="mailto:nakamotoryoke@gmail.com">nakamotoryoke@gmail.com</a></p>
         <p>電話番号: <a href="tel:070-8421-6363">070-8421-6363</a></p>
         <p>Github: <a href="https://github.com/ryorig" target="_blank" rel="noopener noreferrer">@ryorig</a></p>
-        <p>Instagram: <a href="https://instagram.com/ryor_i28" target="_blank" rel="noopener noreferrer">@ryor_i28</a></p>
+        <p>Instagram:
+          <a href="https://instagram.com/ryor_i28" target="_blank" rel="noopener noreferrer"
+            >@ryor_i28</a
+          >
+        </p>
       </div>
     </section>
   </main>
