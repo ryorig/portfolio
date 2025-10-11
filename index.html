@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>NAKAMOTO RYOSUKE</title>
   <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
   <header>
@@ -25,24 +24,24 @@
   </header>
 
   <main>
-<section id="ryosuke" class="centered">
-  <div class="circle-animation-wrapper">
-    <img src="ME.png" alt="about me" class="ryosuke-img" id="rotatingImage">
-  </div>
-</section>
+    <section id="ryosuke" class="centered">
+      <div class="circle-animation-wrapper">
+        <img src="ME.png" alt="about me" class="ryosuke-img" id="rotatingImage">
+      </div>
+    </section>
 
-<section id="profile" class="profile-section">
-  <div class="profile-img-container">
-    <img src="trueMe.jpg" alt="profile image" class="profile-img">
-  </div>
-  <div class="profile-info">
-    <p>名前：中本怜祐</p>
-    <p>　　まちごとアシスト代表</p>
-    <p>活動：STEAM教育や地域課題のソリューションづくりに奮闘しています。</p>
-    <p>所属：香川高専電子システム工学科</p>
-    <p>出身：岡山県</p>
-  </div>
-</section>
+    <section id="profile" class="profile-section">
+      <div class="profile-img-container">
+        <img src="trueMe.jpg" alt="profile image" class="profile-img">
+      </div>
+      <div class="profile-info">
+        <p>名前：中本怜祐</p>
+        <p>　　まちごとアシスト代表</p>
+        <p>活動：STEAM教育や地域課題のソリューションづくりに奮闘しています。</p>
+        <p>所属：香川高専電子システム工学科</p>
+        <p>出身：岡山県</p>
+      </div>
+    </section>
 
     <section id="aboutme" class="main-section timeline-section">
       <div class="timeline-container">
@@ -102,69 +101,59 @@
       </div>
     </section>
 
-
     <section id="works" class="works-section">
-      <div class="work-card-list">
-        <div class="work-card">
-          <img src="rakuben.jpg">
-          <h3>らくべん</h3>
-          <p>中学二年生の時に過去問を共有するアプリを作成。</p>
+      <div class="carousel">
+        <!-- ラジオボタン（スライド切替用、非表示） -->
+        <input type="radio" name="carousel" id="slide1" checked hidden>
+        <input type="radio" name="carousel" id="slide2" hidden>
+        <input type="radio" name="carousel" id="slide3" hidden>
+        <input type="radio" name="carousel" id="slide4" hidden>
+
+        <!-- スライダー本体 -->
+        <div class="carousel-track">
+          <div class="work-card">
+            <img src="rakuben.jpg" alt="らくべん">
+            <h3>らくべん</h3>
+            <p>中学二年生の時に過去問を共有するアプリを作成。</p>
+          </div>
+          <div class="work-card">
+            <img src="kigyotaiken.jpg" alt="自由研究ワークショップ">
+            <h3>自由研究ワークショップ</h3>
+            <p>中学二年生の時に岡山の起業体験プログラムに参加。地元の公民館で小学生向けのワークショップを実施。</p>
+          </div>
+          <div class="work-card">
+            <img src="programingschool.jpg" alt="プログラミング講座">
+            <h3>プログラミング講座</h3>
+            <p>岡山で小中学生向けのプログラミング講座を継続的に実施。</p>
+          </div>
+          <div class="work-card">
+            <img src="prepmate.jpg" alt="PrepMate">
+            <h3>PrepMate</h3>
+            <p>LINE HAHOO HACKUで開発したコーディネートアプリ。</p>
+          </div>
         </div>
-        <div class="work-card">
-          <img src="kigyotaiken.jpg">
-          <h3>自由研究ワークショップ</h3>
-          <p>中学二年生の時に岡山の起業体験プログラムに参加する。<br>その際に地元の公民館で小学生向けのワークショップを実施</p>
-        </div>
-       　<div class="work-card">
-          <img src="programingschool.jpg">
-          <h3>プログラミング講座</h3>
-          <p>岡山で小中学生向けのプログラミング講座を継続的に実施</p>
-        </div>
-        <div class="work-card">
-          <img src="prepmate.jpg">
-          <h3>PrepMate</h3>
-          <p>LINE HAHOO HACKUで開発したコーディネートアプリ</p>
-        </div>
-        <div class="work-card">
-          <img src="AKATSUKI.jpg">
-          <h3>AKATSUKIプロジェクト</h3>
-          <p>経済産業省の未踏<br>100万円の補助金を受け、地方の課題解決を目指したプログラムに参加している。</p>
-        </div>
-      　<div class="work-card">
-          <img src="kosen.jpg">
-          <h3>高専キャリア</h3>
-          <p>高専キャリア夏の全国大会2025に参加。LTをしてきました。</p>
-        </div>
-        <div class="work-card">
-          <img src="DMGMORI.jpg">
-          <h3>DMG MORI</h3>
-          <p>DMG 森精機の実習に参加</p>
-        </div>
-        <div class="work-card">
-          <img src="Devcamp.jpg">
-          <h3>DevCamp</h3>
-          <p>Twogate DevCampに参加して隣の高専生というアプリを開発しました。</p>
-        </div>
-      　</div>
-        <div class="work-card">
-          <img src="大分高専.jpg">
-          <h3>大分高専の研究室</h3>
-          <p>大分高専の研究室を見学してきました。</p>
-        </div>
-        <div class="work-card">
-          <img src="三豊AIプログラミング教室.jpg">
-          <h3>三豊AIプログラミング教室</h3>
-          <p>香川県で無料のプログラミング教室を実施しています。これからも継続的に開催します。</p>
-        </div>
+
+        <!-- 前後ボタン -->
+        <label for="slide4" class="carousel-btn prev">&#10094;</label>
+        <label for="slide2" class="carousel-btn next">&#10095;</label>
+
+        <label for="slide1" class="carousel-btn prev slide2">&#10094;</label>
+        <label for="slide3" class="carousel-btn next slide2">&#10095;</label>
+
+        <label for="slide2" class="carousel-btn prev slide3">&#10094;</label>
+        <label for="slide4" class="carousel-btn next slide3">&#10095;</label>
+
+        <label for="slide3" class="carousel-btn prev slide4">&#10094;</label>
+        <label for="slide1" class="carousel-btn next slide4">&#10095;</label>
       </div>
     </section>
 
     <section id="contact" class="contact-section">
       <div class="contact-content">
-<p>メール: <a href="mailto:nakamotoryoke@gmail.com">nakamotoryoke@gmail.com</a></p>
-<p>電話番号: <a href="tel:070-8421-6363">070-8421-6363</a></p>
-<p>Github: <a href="https://github.com/ryorig" target="_blank" rel="noopener noreferrer">@ryorig</a></p>
-<p>Instagram: <a href="https://instagram.com/ryor_i28" target="_blank" rel="noopener noreferrer">@ryor_i28</a></p>
+        <p>メール: <a href="mailto:nakamotoryoke@gmail.com">nakamotoryoke@gmail.com</a></p>
+        <p>電話番号: <a href="tel:070-8421-6363">070-8421-6363</a></p>
+        <p>Github: <a href="https://github.com/ryorig" target="_blank" rel="noopener noreferrer">@ryorig</a></p>
+        <p>Instagram: <a href="https://instagram.com/ryor_i28" target="_blank" rel="noopener noreferrer">@ryor_i28</a></p>
       </div>
     </section>
   </main>
