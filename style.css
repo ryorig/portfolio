@@ -39,7 +39,8 @@ nav {
 
 .centered {
   min-height: 60vh; display: flex; justify-content: center; align-items: center;
-}.circle-animation-wrapper {
+}
+.circle-animation-wrapper {
   position: relative;
   width: 300px;
   height: 300px;
@@ -83,9 +84,8 @@ nav {
   object-fit: cover;
   border-radius: 50%;
   background: var(--sub-bg);
-  border: none; /* 枠を消す */
+  border: none;
 }
-
 
 .about-img {
   width: 300px;
@@ -110,9 +110,6 @@ nav {
 }
 
 
-.profile-img {
-  width: 140px; height: 140px; object-fit: cover; border-radius: 50%; background: var(--sub-bg); border:none;
-}
 .profile-info { flex: 3; }
 .profile-info p { margin: 0.5em 0; }
 
@@ -127,27 +124,92 @@ nav {
 .works-section {
   padding: 2rem 0; max-width: 1000px; margin: 0 auto;
 }
-.work-card-list {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.2rem;
-}
-.work-card {
+
+/* カルーセル部分 */
+.carousel {
+  position: relative;
+  width: 90vw;
+  max-width: 900px;
+  margin: 2rem auto;
+  overflow: hidden;
+  border-radius: 12px;
   background: var(--card-bg);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.carousel-track {
+  display: flex;
+  width: 400%;
+  transition: transform 0.5s ease;
+}
+.carousel-track .work-card {
+  flex: 1 0 100%;
+  margin: 1rem;
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1.2em 1em;
   box-shadow: 0 0 6px rgba(0,0,0,0.02);
 }
-.work-card h3 { margin-top: 0; }
-.work-card img {
-  width: 100%;       /* 枠の幅いっぱいに広げる */
-  height: auto;      /* 高さは自動調整で縦横比維持 */
-  object-fit: contain; /* 画像全体を枠内に収める（縦横比は保つが、すきまができる場合あり） */
-  display: block;    /* 画像の下の微細な隙間削除 */
-  border-radius: 8px; /* 必要なら角丸 */
+.carousel-track .work-card h3 {
+  margin-top: 0;
+}
+.carousel-track .work-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
 }
 
-/* contact */
+/* ラジオボタンによるスライド切替 */
+#slide1:checked ~ .carousel-track {
+  transform: translateX(0%);
+}
+#slide2:checked ~ .carousel-track {
+  transform: translateX(-100%);
+}
+#slide3:checked ~ .carousel-track {
+  transform: translateX(-200%);
+}
+#slide4:checked ~ .carousel-track {
+  transform: translateX(-300%);
+}
+
+/* スライド矢印ボタン */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.3);
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.6);
+}
+.carousel-btn.prev {
+  left: 10px;
+}
+.carousel-btn.next {
+  right: 10px;
+}
+
+/* 表示切替用ボタン制御 */
+#slide1:checked ~ .prev {display:none;}
+#slide1:checked ~ .next {display:inline-block;}
+#slide2:checked ~ .prev.slide2 {display:inline-block;}
+#slide2:checked ~ .next.slide2 {display:inline-block;}
+#slide3:checked ~ .prev.slide3 {display:inline-block;}
+#slide3:checked ~ .next.slide3 {display:inline-block;}
+#slide4:checked ~ .prev.slide4 {display:inline-block;}
+#slide4:checked ~ .next.slide4 {display:none;}
+
+/* contactセクション */
 .contact-section {
   padding: 2rem 0; background: var(--sub-bg); min-height: 180px;
 }
@@ -177,63 +239,63 @@ nav {
   .about-section { min-height: 180px;}
 }
 
-    .timeline-section {
-      background: #1793d1;
-      color: #fff;
-      border-radius: 0 !important;
-      padding: 35px 0 0 0;
-      margin-bottom: 0;
-      position: relative;
-      overflow-x: auto;
-      box-shadow: none;
-    }
-    .timeline-container {
-      max-width: 700px;
-      margin: 0 auto; padding: 0 10px; position: relative;
-    }
-    .timeline-title {
-      color: #fff; text-align: center; margin-bottom: 32px;
-      font-size: 2rem; letter-spacing:1px; font-weight:700;
-    }
-    .timeline {
-      position: relative; width:100%; margin-top:15px;
-    }
-    .timeline::before {
-      content: "";
-      position: absolute; left: 120px; top: 0;
-      width: 8px; height: 100%;
-      background: #fff;
-      border-radius: 6px;
-      z-index: 1;
-    }
-    .timeline-item {
-      display: flex; align-items: flex-start; margin-bottom: 48px; min-height: 48px; position: relative;
-    }
-    .timeline-date {
-      width: 110px; text-align: right; font-size: 1.18rem; font-family: inherit; letter-spacing: 1px;
-      line-height: 1.5; font-weight: bold; flex-shrink: 0;
-    }
-    .timeline-dot {
-      width: 38px; min-width: 38px; height: 38px; background: #fff;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      position: relative; z-index: 2; margin: 0 18px; border: none;
-    }
-    .timeline-dot.current {
-      width: 46px; height: 62px; border-radius: 23px; margin: 0 14px; background: #fff;
-    }
-    .timeline-date.current { font-size: 1.45rem; color:#fff; font-weight:800; letter-spacing:1px;}
-    .timeline-content { font-size: 1.12rem; line-height: 1.7; white-space: pre-line; margin-top: 2px; font-weight: 400;}
-    .timeline-item:last-child .timeline-content { font-weight:500; font-size:1.12rem;}
-    @media (max-width: 600px) {
-      .timeline-section {padding:10px 0 0 0; border-radius:0;}
-      .timeline-container {padding:5px;}
-      .timeline-title {font-size:1.12rem;}
-      .timeline-date {width:55px; font-size:0.98rem;}
-      .timeline-dot {width:22px;height:22px;min-width:22px;margin:0 8px;}
-      .timeline-dot.current {width:28px;height:43px;}
-      .timeline-content {font-size:0.89rem;}
-      .timeline::before {left: 72px; width:4px;}
-    }
+.timeline-section {
+  background: #1793d1;
+  color: #fff;
+  border-radius: 0 !important;
+  padding: 35px 0 0 0;
+  margin-bottom: 0;
+  position: relative;
+  overflow-x: auto;
+  box-shadow: none;
+}
+.timeline-container {
+  max-width: 700px;
+  margin: 0 auto; padding: 0 10px; position: relative;
+}
+.timeline-title {
+  color: #fff; text-align: center; margin-bottom: 32px;
+  font-size: 2rem; letter-spacing:1px; font-weight:700;
+}
+.timeline {
+  position: relative; width:100%; margin-top:15px;
+}
+.timeline::before {
+  content: "";
+  position: absolute; left: 120px; top: 0;
+  width: 8px; height: 100%;
+  background: #fff;
+  border-radius: 6px;
+  z-index: 1;
+}
+.timeline-item {
+  display: flex; align-items: flex-start; margin-bottom: 48px; min-height: 48px; position: relative;
+}
+.timeline-date {
+  width: 110px; text-align: right; font-size: 1.18rem; font-family: inherit; letter-spacing: 1px;
+  line-height: 1.5; font-weight: bold; flex-shrink: 0;
+}
+.timeline-dot {
+  width: 38px; min-width: 38px; height: 38px; background: #fff;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 2; margin: 0 18px; border: none;
+}
+.timeline-dot.current {
+  width: 46px; height: 62px; border-radius: 23px; margin: 0 14px; background: #fff;
+}
+.timeline-date.current { font-size: 1.45rem; color:#fff; font-weight:800; letter-spacing:1px;}
+.timeline-content { font-size: 1.12rem; line-height: 1.7; white-space: pre-line; margin-top: 2px; font-weight: 400;}
+.timeline-item:last-child .timeline-content { font-weight:500; font-size:1.12rem;}
+@media (max-width: 600px) {
+  .timeline-section {padding:10px 0 0 0; border-radius:0;}
+  .timeline-container {padding:5px;}
+  .timeline-title {font-size:1.12rem;}
+  .timeline-date {width:55px; font-size:0.98rem;}
+  .timeline-dot {width:22px;height:22px;min-width:22px;margin:0 8px;}
+  .timeline-dot.current {width:28px;height:43px;}
+  .timeline-content {font-size:0.89rem;}
+  .timeline::before {left: 72px; width:4px;}
+}
 
 @media (max-width: 680px) {
   .circle-animation-wrapper {
