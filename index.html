@@ -4,7 +4,467 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>NAKAMOTO RYOSUKE</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+:root {
+  --main-bg: #fafafa;
+  --main-txt: #232323;
+  --sub-bg: #f1f1f3;
+  --card-bg: #ffffff;
+  --border: #e0e0e0;
+  --accent: #767676;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: var(--main-bg);
+  color: var(--main-txt);
+  font-family: 'Yu Gothic', YuGothic, 'Hiragino Sans', Meiryo, sans-serif;
+}
+
+header {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+}
+.nav-logo {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li {
+  margin-left: 1.2rem;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--main-txt);
+  font-weight: 500;
+}
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.nav-toggle span {
+  width: 28px;
+  height: 3px;
+  background: var(--accent);
+  margin: 5px 0;
+  border-radius: 2px;
+}
+
+.centered {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circle-animation-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.ryosuke-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease;
+  background: var(--sub-bg);
+}
+
+.profile-section {
+  display: flex;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem 2rem 2rem 2rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.03);
+  align-items: center;
+}
+
+.profile-img-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: var(--sub-bg);
+  border: none;
+}
+
+.profile-info {
+  flex: 3;
+}
+.profile-info p {
+  margin: 0.5em 0;
+}
+
+.timeline-section {
+  background: #1793d1;
+  color: #fff;
+  border-radius: 0 !important;
+  padding: 35px 0 0 0;
+  margin-bottom: 0;
+  position: relative;
+  overflow-x: auto;
+  box-shadow: none;
+}
+.timeline-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 10px;
+  position: relative;
+}
+.timeline-title {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.timeline {
+  position: relative;
+  width: 100%;
+  margin-top: 15px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 120px;
+  top: 0;
+  width: 8px;
+  height: 100%;
+  background: #fff;
+  border-radius: 6px;
+  z-index: 1;
+}
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 48px;
+  min-height: 48px;
+  position: relative;
+}
+.timeline-date {
+  width: 110px;
+  text-align: right;
+  font-size: 1.18rem;
+  font-family: inherit;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+.timeline-dot {
+  width: 38px;
+  min-width: 38px;
+  height: 38px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin: 0 18px;
+  border: none;
+}
+.timeline-dot.current {
+  width: 46px;
+  height: 62px;
+  border-radius: 23px;
+  margin: 0 14px;
+  background: #fff;
+}
+.timeline-date.current {
+  font-size: 1.45rem;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.timeline-content {
+  font-size: 1.12rem;
+  line-height: 1.7;
+  white-space: pre-line;
+  margin-top: 2px;
+  font-weight: 400;
+}
+.timeline-item:last-child .timeline-content {
+  font-weight: 500;
+  font-size: 1.12rem;
+}
+
+.works-section {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.works-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  color: var(--main-txt);
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.work-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background: var(--sub-bg);
+}
+
+.carousel-slides {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--main-txt);
+  transition: background 0.2s ease;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.indicator.active {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.2);
+}
+
+.work-content {
+  padding: 1.5rem;
+}
+
+.work-content h3 {
+  margin: 0 0 0.8rem 0;
+  font-size: 1.4rem;
+  color: var(--main-txt);
+}
+
+.work-content p {
+  margin: 0;
+  color: var(--accent);
+  line-height: 1.6;
+}
+
+.contact-section {
+  padding: 2rem 0;
+  background: var(--sub-bg);
+  min-height: 180px;
+}
+.contact-content {
+  max-width: 620px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 2.5rem 1rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.01);
+}
+.contact-content p {
+  margin: 0.5rem 0;
+  font-size: 1.12em;
+}
+
+@media (max-width: 780px) {
+  nav {
+    flex-direction: row;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: var(--card-bg);
+    position: absolute;
+    top: 48px;
+    right: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.13);
+    border-radius: 8px;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .nav-links li {
+    margin: 1.5em 2em 1.5em 1em;
+  }
+  .nav-toggle {
+    display: flex;
+    z-index: 1001;
+  }
+}
+
+@media (max-width: 680px) {
+  .centered {
+    min-height: 50vh;
+  }
+  .profile-section {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: stretch;
+  }
+  .profile-img-container,
+  .profile-info {
+    width: 100%;
+    text-align: center;
+  }
+  .circle-animation-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+  .ryosuke-img {
+    width: 180px;
+    height: 180px;
+  }
+  .works-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .timeline-section {
+    padding: 10px 0 0 0;
+    border-radius: 0;
+  }
+  .timeline-container {
+    padding: 5px;
+  }
+  .timeline-title {
+    font-size: 1.12rem;
+  }
+  .timeline-date {
+    width: 55px;
+    font-size: 0.98rem;
+  }
+  .timeline-dot {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    margin: 0 8px;
+  }
+  .timeline-dot.current {
+    width: 28px;
+    height: 43px;
+  }
+  .timeline-content {
+    font-size: 0.89rem;
+  }
+  .timeline::before {
+    left: 72px;
+    width: 4px;
+  }
+}
+  </style>
 </head>
 <body>
   <header>
@@ -26,7 +486,7 @@
   <main>
     <section id="ryosuke" class="centered">
       <div class="circle-animation-wrapper">
-        <img src="ME.png" alt="about me" class="ryosuke-img" id="rotatingImage" />
+        <img src="ME.png" alt="about me" class="ryosuke-img" />
       </div>
     </section>
 
@@ -43,7 +503,7 @@
       </div>
     </section>
 
-    <section id="aboutme" class="main-section timeline-section">
+    <section id="aboutme" class="timeline-section">
       <div class="timeline-container">
         <div class="timeline-title">About Me</div>
         <div class="timeline">
@@ -102,92 +562,93 @@
     </section>
 
     <section id="works" class="works-section">
-      <div class="carousel">
-        <!-- ラジオボタン（外部カルーセルのスライド切替用、非表示） -->
-        <input type="radio" name="carousel" id="slide1" checked hidden />
-        <input type="radio" name="carousel" id="slide2" hidden />
-        <input type="radio" name="carousel" id="slide3" hidden />
-        <input type="radio" name="carousel" id="slide4" hidden />
-
-        <!-- スライダー本体 -->
-        <div class="carousel-track">
-          <!-- ワークカード1 -->
-          <div class="work-card">
-            <div class="inner-carousel">
-              <input type="radio" name="work1" id="work1-slide1" checked hidden />
-              <input type="radio" name="work1" id="work1-slide2" hidden />
-              <div class="inner-carousel-track">
-                <img src="AKATSUKI.jpg" alt="らくべん1" />
-                <img src="DMGMORI.jpg" alt="らくべん2" />
+      <h2>Works</h2>
+      <div class="works-grid">
+        
+        <!-- Work 1: らくべん -->
+        <div class="work-card">
+          <div class="carousel-container" data-carousel="1">
+            <div class="carousel-slides">
+              <div class="carousel-slide">
+                <img src="AKATSUKI.jpg" alt="らくべん画像1" />
               </div>
-              <label for="work1-slide1" class="inner-prev">&#10094;</label>
-              <label for="work1-slide2" class="inner-next">&#10095;</label>
+              <div class="carousel-slide">
+                <img src="DMGMORI.jpg" alt="らくべん画像2" />
+              </div>
             </div>
+            <button class="carousel-btn prev" aria-label="前へ">‹</button>
+            <button class="carousel-btn next" aria-label="次へ">›</button>
+            <div class="carousel-indicators"></div>
+          </div>
+          <div class="work-content">
             <h3>らくべん</h3>
             <p>中学二年生の時に過去問を共有するアプリを作成。</p>
           </div>
+        </div>
 
-          <!-- ワークカード2 -->
-          <div class="work-card">
-            <div class="inner-carousel">
-              <input type="radio" name="work2" id="work2-slide1" checked hidden />
-              <input type="radio" name="work2" id="work2-slide2" hidden />
-              <div class="inner-carousel-track">
-                <img src="kigyotaiken1.jpg" alt="自由研究ワークショップ1" />
-                <img src="kigyotaiken2.jpg" alt="自由研究ワークショップ2" />
+        <!-- Work 2: 自由研究ワークショップ -->
+        <div class="work-card">
+          <div class="carousel-container" data-carousel="2">
+            <div class="carousel-slides">
+              <div class="carousel-slide">
+                <img src="kigyotaiken1.jpg" alt="自由研究ワークショップ画像1" />
               </div>
-              <label for="work2-slide1" class="inner-prev">&#10094;</label>
-              <label for="work2-slide2" class="inner-next">&#10095;</label>
+              <div class="carousel-slide">
+                <img src="kigyotaiken2.jpg" alt="自由研究ワークショップ画像2" />
+              </div>
             </div>
+            <button class="carousel-btn prev" aria-label="前へ">‹</button>
+            <button class="carousel-btn next" aria-label="次へ">›</button>
+            <div class="carousel-indicators"></div>
+          </div>
+          <div class="work-content">
             <h3>自由研究ワークショップ</h3>
             <p>岡山の起業体験プログラムに参加し、地元の公民館で小学生向けのワークショップを実施。</p>
           </div>
+        </div>
 
-          <!-- ワークカード3 -->
-          <div class="work-card">
-            <div class="inner-carousel">
-              <input type="radio" name="work3" id="work3-slide1" checked hidden />
-              <input type="radio" name="work3" id="work3-slide2" hidden />
-              <div class="inner-carousel-track">
-                <img src="programingschool1.jpg" alt="プログラミング講座1" />
-                <img src="programingschool2.jpg" alt="プログラミング講座2" />
+        <!-- Work 3: プログラミング講座 -->
+        <div class="work-card">
+          <div class="carousel-container" data-carousel="3">
+            <div class="carousel-slides">
+              <div class="carousel-slide">
+                <img src="programingschool1.jpg" alt="プログラミング講座画像1" />
               </div>
-              <label for="work3-slide1" class="inner-prev">&#10094;</label>
-              <label for="work3-slide2" class="inner-next">&#10095;</label>
+              <div class="carousel-slide">
+                <img src="programingschool2.jpg" alt="プログラミング講座画像2" />
+              </div>
             </div>
+            <button class="carousel-btn prev" aria-label="前へ">‹</button>
+            <button class="carousel-btn next" aria-label="次へ">›</button>
+            <div class="carousel-indicators"></div>
+          </div>
+          <div class="work-content">
             <h3>プログラミング講座</h3>
             <p>岡山で小中学生向けのプログラミング講座を継続的に実施。</p>
           </div>
+        </div>
 
-          <!-- ワークカード4 -->
-          <div class="work-card">
-            <div class="inner-carousel">
-              <input type="radio" name="work4" id="work4-slide1" checked hidden />
-              <input type="radio" name="work4" id="work4-slide2" hidden />
-              <div class="inner-carousel-track">
-                <img src="prepmate1.jpg" alt="PrepMate1" />
-                <img src="prepmate2.jpg" alt="PrepMate2" />
+        <!-- Work 4: PrepMate -->
+        <div class="work-card">
+          <div class="carousel-container" data-carousel="4">
+            <div class="carousel-slides">
+              <div class="carousel-slide">
+                <img src="prepmate1.jpg" alt="PrepMate画像1" />
               </div>
-              <label for="work4-slide1" class="inner-prev">&#10094;</label>
-              <label for="work4-slide2" class="inner-next">&#10095;</label>
+              <div class="carousel-slide">
+                <img src="prepmate2.jpg" alt="PrepMate画像2" />
+              </div>
             </div>
+            <button class="carousel-btn prev" aria-label="前へ">‹</button>
+            <button class="carousel-btn next" aria-label="次へ">›</button>
+            <div class="carousel-indicators"></div>
+          </div>
+          <div class="work-content">
             <h3>PrepMate</h3>
-            <p>LINE HAHOO HACKUで開発したコーディネートアプリ。</p>
+            <p>LINE YAHOO HACKUで開発したコーディネートアプリ。</p>
           </div>
         </div>
 
-        <!-- 外部カルーセル操作用ボタン -->
-        <label for="slide4" class="carousel-btn prev">&#10094;</label>
-        <label for="slide2" class="carousel-btn next">&#10095;</label>
-
-        <label for="slide1" class="carousel-btn prev slide2">&#10094;</label>
-        <label for="slide3" class="carousel-btn next slide2">&#10095;</label>
-
-        <label for="slide2" class="carousel-btn prev slide3">&#10094;</label>
-        <label for="slide4" class="carousel-btn next slide3">&#10095;</label>
-
-        <label for="slide3" class="carousel-btn prev slide4">&#10094;</label>
-        <label for="slide1" class="carousel-btn next slide4">&#10095;</label>
       </div>
     </section>
 
@@ -197,13 +658,94 @@
         <p>電話番号: <a href="tel:070-8421-6363">070-8421-6363</a></p>
         <p>Github: <a href="https://github.com/ryorig" target="_blank" rel="noopener noreferrer">@ryorig</a></p>
         <p>Instagram:
-          <a href="https://instagram.com/ryor_i28" target="_blank" rel="noopener noreferrer"
-            >@ryor_i28</a
-          >
+          <a href="https://instagram.com/ryor_i28" target="_blank" rel="noopener noreferrer">@ryor_i28</a>
         </p>
       </div>
     </section>
   </main>
-  <script src="main.js"></script>
+
+  <script>
+    // ナビゲーショントグル
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // カルーセル機能
+    class Carousel {
+      constructor(container) {
+        this.container = container;
+        this.slides = container.querySelector('.carousel-slides');
+        this.slideElements = container.querySelectorAll('.carousel-slide');
+        this.prevBtn = container.querySelector('.prev');
+        this.nextBtn = container.querySelector('.next');
+        this.indicatorsContainer = container.querySelector('.carousel-indicators');
+        this.currentIndex = 0;
+        this.totalSlides = this.slideElements.length;
+        
+        this.init();
+      }
+      
+      init() {
+        this.createIndicators();
+        this.prevBtn.addEventListener('click', () => this.prev());
+        this.nextBtn.addEventListener('click', () => this.next());
+        this.updateCarousel();
+      }
+      
+      createIndicators() {
+        for (let i = 0; i < this.totalSlides; i++) {
+          const indicator = document.createElement('div');
+          indicator.classList.add('indicator');
+          if (i === 0) indicator.classList.add('active');
+          indicator.addEventListener('click', () => this.goToSlide(i));
+          this.indicatorsContainer.appendChild(indicator);
+        }
+      }
+      
+      updateCarousel() {
+        this.slides.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+        
+        const indicators = this.indicatorsContainer.querySelectorAll('.indicator');
+        indicators.forEach((ind, i) => {
+          ind.classList.toggle('active', i === this.currentIndex);
+        });
+      }
+      
+      next() {
+        this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+        this.updateCarousel();
+      }
+      
+      prev() {
+        this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+        this.updateCarousel();
+      }
+      
+      goToSlide(index) {
+        this.currentIndex = index;
+        this.updateCarousel();
+      }
+    }
+
+    // 全てのカルーセルを初期化
+    document.querySelectorAll('.carousel-container').forEach(container => {
+      new Carousel(container);
+    });
+
+    // スムーススクロール
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          navLinks.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
