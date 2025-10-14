@@ -96,7 +96,6 @@ nav {
   padding: 1rem 2rem 2rem 2rem;
   background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.03);
   align-items: center;
 }
 
@@ -244,13 +243,9 @@ nav {
   background: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .work-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .carousel-container {
@@ -361,7 +356,6 @@ nav {
   background: var(--card-bg);
   border-radius: 10px;
   padding: 2.5rem 1rem;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.01);
 }
 .contact-content p {
   margin: 0.5rem 0;
@@ -379,7 +373,6 @@ nav {
     position: absolute;
     top: 48px;
     right: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.13);
     border-radius: 8px;
   }
   .nav-links.active {
