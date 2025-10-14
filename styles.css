@@ -241,7 +241,7 @@ nav {
 
 .work-card {
   background: var(--card-bg);
-  border-radius: 12px;
+  border-radius: 0px;
   overflow: hidden;
 }
 
