@@ -7,14 +7,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- ローディング画面 -->
-  <div id="loading" class="loading">
-    <div class="loading-text">LOADING</div>
-  </div>
-
-  <!-- スクロールインジケーター -->
-  <div class="scroll-indicator">SCROLL</div>
-
   <header>
     <nav>
       <div class="nav-logo">NAKAMOTO</div>
@@ -22,80 +14,104 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
-        <li><a href="#top">TOP</a></li>
-        <li><a href="#profile">PROFILE</a></li>
-        <li><a href="#exhibition">EXHIBITION</a></li>
-        <li><a href="#works">WORKS</a></li>
-        <li><a href="#shop">ONLINE SHOP</a></li>
-        <li><a href="#news">NEWS</a></li>
-        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="#ryosuke">RYOSUKE</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <!-- TOP セクション -->
-    <section id="top" class="top-section">
-      <div class="top-content">
-        <img src="image/中本ロゴ.png" alt="NAKAMOTO RYOSUKE" class="top-logo" id="rotatingImage" />
+    <section id="ryosuke" class="centered">
+      <div class="circle-animation-wrapper">
+        <img src="image/中本ロゴ.png" alt="about me" class="ryosuke-img" id="rotatingImage" />
       </div>
     </section>
 
-    <!-- PICKUP GALLERY セクション -->
-    <section class="pickup-gallery-section">
-      <h2 class="section-title">PICKUP GALLERY</h2>
-      <div class="pickup-gallery">
-        <div class="pickup-item">
-          <img src="image/LINEYAHOOprepmate.jpg" alt="PrepMate" />
-          <div class="pickup-label">2025 PrepMate</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROFILE セクション -->
     <section id="profile" class="profile-section">
-      <h2 class="section-title">PROFILE</h2>
-      <div class="profile-container">
-        <div class="profile-image-wrapper">
-          <img src="image/中本顔写真.jpg" alt="profile image" class="profile-img" />
-        </div>
-        <div class="profile-content">
-          <h3>NAKAMOTO RYOSUKE</h3>
-          <div class="profile-text">
-            <p>岡山県出身。香川高専電子システム工学科在学中。</p>
-            <p>2016年よりSTEAM教育や地域課題のソリューションづくりに取り組む。</p>
-            <p>2024年には、まちごとアシストを設立し代表として活動を開始。</p>
-            <p>個展などで積極的に作品発表も行う。プログラミング教育と地域創生が好き。</p>
-            <p>技術を活用した教育支援と、地域課題の解決を特長とする世界観。</p>
-            <p>観る人の心にそっと寄り添うあたたかみのあるプロジェクトを手がける。</p>
+      <div class="profile-img-container">
+        <img src="image/中本顔写真.jpg" alt="profile image" class="profile-img" />
+      </div>
+      <div class="profile-info">
+        <p>名前：中本怜祐</p>
+        <p>　　まちごとアシスト代表</p>
+        <p>活動：STEAM教育や地域課題のソリューションづくりに奮闘しています。</p>
+        <p>所属：香川高専電子システム工学科</p>
+        <p>出身：岡山県</p>
+      </div>
+    </section>
+
+    <section id="aboutme" class="timeline-section">
+      <div class="timeline-container">
+        <div class="timeline-title">About Me</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2010</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">岡山県岡山市に生まれる</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2019</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">父がやっていた<br />プログラミング講座に通う</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2023</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">空手で全国出場</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">起業体験プログラムに参加して<br />自由研究ワークショップを開催</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">過去問を共有するアプリ「らくべん」を開発</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2024</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">岡山の公民館で<br />プログラミング講座を開く</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2025</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">香川高専に入学</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">LINE YAHOO HACKU参加<br />朝の時間効率化アプリ「PrepMate」を開発</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date current">現在</div>
+            <div class="timeline-dot current"></div>
+            <div class="timeline-content">
+              プログラミング教室を運営中<br />
+              AKATSUKIプロジェクトに採択<br />
+              100万円の資金をもとに活動しています。<br />
+              高専プログラミングコンテスト競技部門出場
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WORKS セクション -->
     <section id="works" class="works-section">
-      <h2 class="section-title">WORKS</h2>
-      <div class="works-categories">
-        <div class="category-tabs">
-          <button class="category-tab active" data-category="all">ALL</button>
-          <button class="category-tab" data-category="app">APP</button>
-          <button class="category-tab" data-category="education">EDUCATION</button>
-          <button class="category-tab" data-category="other">OTHER</button>
-        </div>
-      </div>
-      <div class="works-grid">
-        <div class="work-card" data-category="app">
-          <div class="carousel-container" data-carousel="1">
+      <h2>Works</h2>
+      <div class="works-grid">        
+
+        <div class="work-card">
+          <div class="carousel-container" data-carousel="4">
             <div class="carousel-slides">
               <div class="carousel-slide">
-                <img src="image/LINEYAHOO説明画像.jpg" alt="PrepMate説明" />
-              </div>
-              <div class="carousel-slide">
-                <img src="image/LINEYAHOO集合写真.jpg" alt="PrepMate集合写真" />
-              </div>
-              <div class="carousel-slide">
-                <img src="image/LINEYAHOOprepmate.jpg" alt="PrepMate" />
+                <img src="image/LINEYAHOO説明画像.jpg" alt="PrepMate画像2" />
+                <img src="image/LINEYAHOO集合写真.jpg" alt="PrepMate画像2" />
+                <img src="image/LINEYAHOOprepmate.jpg" alt="PrepMate画像2" />
               </div>
             </div>
             <button class="carousel-btn prev" aria-label="前へ">‹</button>
@@ -103,121 +119,25 @@
             <div class="carousel-indicators"></div>
           </div>
           <div class="work-content">
-            <h3>PrepMate</h3>
-            <p>LINE YAHOO HACKUに参加して朝の時間効率化アプリ「PrepMate」を開発しました。</p>
-          </div>
-        </div>
-      </div>
-      <div class="works-more">
-        <button class="more-btn">MORE</button>
-      </div>
-    </section>
-
-    <!-- EXHIBITION セクション -->
-    <section id="exhibition" class="exhibition-section">
-      <h2 class="section-title">EXHIBITION</h2>
-      <div class="exhibition-grid">
-        <div class="exhibition-item">
-          <img src="image/LINEYAHOO集合写真.jpg" alt="LINE YAHOO HACKU" />
-          <div class="exhibition-info">
             <h3>LINE YAHOO HACKU</h3>
-            <p>2025</p>
+            <p>LINE YAHOO HACKUに参加して朝の時間効率化アプリ「PrepMate」を開発しました。
+            </p>
           </div>
         </div>
-        <div class="exhibition-item">
-          <img src="image/akatsuki合宿発表注射針.jpg" alt="AKATSUKIプロジェクト" />
-          <div class="exhibition-info">
-            <h3>AKATSUKIプロジェクト</h3>
-            <p>2025</p>
-          </div>
-        </div>
-        <div class="exhibition-item">
-          <img src="image/高専キャリア夏の全国大会写真.jpg" alt="高専キャリア大会" />
-          <div class="exhibition-info">
-            <h3>高専キャリア大会</h3>
-            <p>2024</p>
-          </div>
-        </div>
-      </div>
-      <div class="works-more">
-        <button class="more-btn">MORE</button>
+
       </div>
     </section>
 
-    <!-- ONLINE SHOP セクション -->
-    <section id="shop" class="shop-section">
-      <h2 class="section-title">ONLINE SHOP</h2>
-      <div class="shop-categories">
-        <div class="category-tabs">
-          <button class="category-tab active" data-shop-category="all">ALL</button>
-          <button class="category-tab" data-shop-category="new">NEW 新着商品</button>
-          <button class="category-tab" data-shop-category="digital">DIGITAL デジタル</button>
-          <button class="category-tab" data-shop-category="other">OTHER その他</button>
-        </div>
-      </div>
-      <div class="shop-grid">
-        <div class="shop-item">
-          <div class="shop-placeholder">Coming Soon</div>
-        </div>
-      </div>
-      <div class="works-more">
-        <button class="more-btn">MORE</button>
-      </div>
-    </section>
-
-    <!-- NEWS セクション -->
-    <section id="news" class="news-section">
-      <h2 class="section-title">NEWS</h2>
-      <div class="news-categories">
-        <div class="category-tabs">
-          <button class="category-tab active" data-news-category="all">ALL</button>
-          <button class="category-tab" data-news-category="info">INFO</button>
-        </div>
-      </div>
-      <div class="news-list">
-        <div class="news-item" data-news-category="info">
-          <div class="news-date">2025.01.XX</div>
-          <div class="news-content">サイトを公開しました</div>
-        </div>
-      </div>
-      <div class="works-more">
-        <button class="more-btn">MORE</button>
-      </div>
-    </section>
-
-    <!-- CONTACT セクション -->
     <section id="contact" class="contact-section">
-      <h2 class="section-title">CONTACT</h2>
       <div class="contact-content">
-        <div class="contact-form">
-          <form>
-            <div class="form-group">
-              <label for="name">お名前</label>
-              <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-              <label for="email">メールアドレス</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-              <label for="message">メッセージ</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">送信</button>
-          </form>
-        </div>
-        <div class="contact-info">
-          <p>メール: <a href="mailto:nakamotoryoke@gmail.com">nakamotoryoke@gmail.com</a></p>
-          <p>Github: <a href="https://github.com/ryorig" target="_blank" rel="noopener noreferrer">@ryorig</a></p>
-          <p>Instagram: <a href="https://instagram.com/ryor_i28" target="_blank" rel="noopener noreferrer">@ryor_i28</a></p>
-        </div>
+        <p>メール: <a href="mailto:nakamotoryoke@gmail.com">nakamotoryoke@gmail.com</a></p>
+        <p>Github: <a href="https://github.com/ryorig" target="_blank" rel="noopener noreferrer">@ryorig</a></p>
+        <p>Instagram:
+          <a href="https://instagram.com/ryor_i28" target="_blank" rel="noopener noreferrer">@ryor_i28</a>
+        </p>
       </div>
     </section>
   </main>
-
-  <footer>
-    <p>&copy; NAKAMOTO RYOSUKE</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
