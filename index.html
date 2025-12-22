@@ -3,299 +3,140 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>NAKAMOTO RYOSUKE - Creative Technology Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>NAKAMOTO RYOSUKE</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Loading Screen -->
-  <div id="loadingScreen" class="loading-screen">
-    <div class="loader">
-      <div class="loader-text">LOADING</div>
-      <div class="loader-bar"></div>
+  <div class="fixed-navbar">
+    <div class="navbar-brand">
+      <span class="brand-dot"></span>
+      <span class="brand-name">Nakam</span>
     </div>
-  </div>
-
-  <!-- Cursor Follow -->
-  <div class="cursor-follow"></div>
-
-  <!-- Navigation -->
-  <nav class="main-nav">
-    <div class="nav-logo">
-      <svg width="40" height="40" viewBox="0 0 40 40">
-        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2" fill="none"/>
-        <path d="M20 8 L20 32 M8 20 L32 20" stroke="currentColor" stroke-width="2"/>
-      </svg>
-      <span>NAKAM</span>
-    </div>
-    <ul class="nav-menu">
-      <li><a href="#hero" data-hover="HOME">HOME</a></li>
-      <li><a href="#about" data-hover="ABOUT">ABOUT</a></li>
-      <li><a href="#journey" data-hover="JOURNEY">JOURNEY</a></li>
-      <li><a href="#works" data-hover="WORKS">WORKS</a></li>
-      <li><a href="#contact" data-hover="CONTACT">CONTACT</a></li>
+    <ul class="navbar-links">
+      <li><a href="#ryosuke">RYOSUKE</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#works">WORKS</a></li>
+      <li><a href="#contact">CONTACT</a></li>
     </ul>
-    <button class="menu-toggle" aria-label="メニュー">
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
+  </div>
+  <header>
+  </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="hero-background">
-      <div class="gradient-orb orb-1"></div>
-      <div class="gradient-orb orb-2"></div>
-      <div class="gradient-orb orb-3"></div>
-    </div>
-    <div class="hero-content">
-      <h1 class="hero-title">
-        <span class="title-line" data-text="RYOSUKE">RYOSUKE</span>
-        <span class="title-line" data-text="NAKAMOTO">NAKAMOTO</span>
-      </h1>
-      <p class="hero-subtitle">Creative Technology × Education</p>
-      <div class="hero-logo-container">
-        <img src="image/中本ロゴ.png" alt="Logo" class="hero-logo floating" />
+  <main>
+    <section id="ryosuke" class="centered">
+      <div class="circle-animation-wrapper">
+        <img src="image/中本ロゴ.png" alt="about me" class="ryosuke-img" id="rotatingImage" />
       </div>
-    </div>
-    <div class="scroll-indicator">
-      <span>SCROLL</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">
-          <span class="title-ja">私について</span>
-          <span class="title-en">ABOUT ME</span>
-        </h2>
+    <section id="profile" class="profile-section">
+      <div class="profile-img-container">
+        <img src="image/中本顔写真.jpg" alt="profile image" class="profile-img" />
       </div>
-      
-      <div class="about-content">
-        <div class="about-image">
-          <div class="image-frame">
-            <img src="image/中本顔写真.jpg" alt="中本怜祐" />
-            <div class="image-decoration"></div>
-          </div>
-        </div>
-        
-        <div class="about-info">
-          <div class="info-block">
-            <h3>中本怜祐</h3>
-            <p class="role">まちごとアシスト 代表</p>
-          </div>
-          
-          <div class="info-grid">
-            <div class="info-item">
-              <span class="info-label">活動</span>
-              <p>STEAM教育や地域課題のソリューションづくりに奮闘中</p>
-            </div>
-            <div class="info-item">
-              <span class="info-label">所属</span>
-              <p>香川高専 電子システム工学科</p>
-            </div>
-            <div class="info-item">
-              <span class="info-label">出身</span>
-              <p>岡山県岡山市</p>
-            </div>
-            <div class="info-item">
-              <span class="info-label">好きなこと</span>
-              <p>プログラミング・空手・教育</p>
-            </div>
-          </div>
-          
-          <div class="about-stats">
-            <div class="stat">
-              <span class="stat-number">100万円</span>
-              <span class="stat-label">AKATSUKIプロジェクト資金</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number">50+</span>
-              <span class="stat-label">教えた生徒数</span>
-            </div>
-          </div>
-        </div>
+      <div class="profile-info">
+        <p>名前：中本怜祐</p>
+        <p>    まちごとアシスト代表</p>
+        <p>活動：STEAM教育や地域課題のソリューションづくりに奮闘しています。</p>
+        <p>所属：香川高専電子システム工学科</p>
+        <p>出身：岡山県</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Journey Section -->
-  <section id="journey" class="journey">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">
-          <span class="title-ja">これまでの歩み</span>
-          <span class="title-en">MY JOURNEY</span>
-        </h2>
-      </div>
-      
+    <section id="aboutme" class="timeline-section">
       <div class="timeline-container">
-        <div class="timeline-line"></div>
-        
-        <div class="timeline-item" data-year="2010">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>2010</h3>
-            <p>岡山県岡山市に生まれる</p>
+        <div class="timeline-title">About Me</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2010</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">岡山県岡山市に生まれる</div>
           </div>
-        </div>
-        
-        <div class="timeline-item" data-year="2019">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>2019</h3>
-            <p>父が開催していたプログラミング講座に通い始める</p>
+          <div class="timeline-item">
+            <div class="timeline-date">2019</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">父がやっていた<br />プログラミング講座に通う</div>
           </div>
-        </div>
-        
-        <div class="timeline-item highlight" data-year="2023">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>2023</h3>
-            <p>空手で全国大会出場<br>起業体験プログラムで自由研究ワークショップを開催<br>過去問共有アプリ「らくべん」を開発</p>
+          <div class="timeline-item">
+            <div class="timeline-date">2023</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">空手で全国出場</div>
           </div>
-        </div>
-        
-        <div class="timeline-item" data-year="2024">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>2024</h3>
-            <p>岡山の公民館でプログラミング講座を開始</p>
+          <div class="timeline-item">
+            <div class="timeline-date"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">起業体験プログラムに参加して<br />自由研究ワークショップを開催</div>
           </div>
-        </div>
-        
-        <div class="timeline-item current" data-year="2025">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>2025 - 現在</h3>
-            <p>香川高専入学<br>LINE YAHOO HACKU参加「PrepMate」開発<br>AKATSUKIプロジェクト採択<br>高専プログラミングコンテスト競技部門出場</p>
+          <div class="timeline-item">
+            <div class="timeline-date"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">過去問を共有するアプリ「らくべん」を開発</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2024</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">岡山の公民館で<br />プログラミング講座を開く</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2025</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">香川高専に入学</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">LINE YAHOO HACKU参加<br />朝の時間効率化アプリ「PrepMate」を開発</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date current">現在</div>
+            <div class="timeline-dot current"></div>
+            <div class="timeline-content">
+              プログラミング教室を運営中<br />
+              AKATSUKIプロジェクトに採択<br />
+              100万円の資金をもとに活動しています。<br />
+              高専プログラミングコンテスト競技部門出場
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Works Section -->
-  <section id="works" class="works">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">
-          <span class="title-ja">作品・活動</span>
-          <span class="title-en">WORKS</span>
-        </h2>
-      </div>
-      
-      <div class="works-grid">
-        <article class="work-card">
-          <div class="work-image">
-            <img src="image/LINEYAHOO説明画像.jpg" alt="PrepMate" />
-            <div class="work-overlay">
-              <span class="work-category">HACKATHON</span>
-            </div>
-          </div>
-          <div class="work-info">
-            <h3>PrepMate</h3>
-            <p>LINE YAHOO HACKUで開発した朝の時間効率化アプリ。忙しい朝の準備をサポートし、時間管理を最適化します。</p>
-            <div class="work-tags">
-              <span>React</span>
-              <span>LINE API</span>
-              <span>UI/UX</span>
-            </div>
-          </div>
-        </article>
-        
-        <article class="work-card">
-          <div class="work-image">
-            <img src="image/LINEYAHOOprepmate.jpg" alt="らくべん" />
-            <div class="work-overlay">
-              <span class="work-category">EDUCATION</span>
-            </div>
-          </div>
-          <div class="work-info">
-            <h3>らくべん</h3>
-            <p>学生のための過去問共有プラットフォーム。効率的な学習をサポートする教育支援アプリケーション。</p>
-            <div class="work-tags">
-              <span>Web App</span>
-              <span>Database</span>
-              <span>Education</span>
-            </div>
-          </div>
-        </article>
-        
-        <article class="work-card">
-          <div class="work-image">
-            <img src="image/LINEYAHOO集合写真.jpg" alt="プログラミング教室" />
-            <div class="work-overlay">
-              <span class="work-category">TEACHING</span>
-            </div>
-          </div>
-          <div class="work-info">
-            <h3>プログラミング教室</h3>
-            <p>地域の子どもたちにプログラミングの楽しさを伝える教室を運営。STEAM教育を通じて創造力を育成。</p>
-            <div class="work-tags">
-              <span>STEAM</span>
-              <span>Education</span>
-              <span>Community</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+    <section id="works" class="works-section">
+      <h2>Works</h2>
+      <div class="works-grid">        
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">
-          <span class="title-ja">お問い合わせ</span>
-          <span class="title-en">CONTACT</span>
-        </h2>
+        <div class="work-card">
+          <div class="carousel-container" data-carousel="4">
+            <div class="carousel-slides">
+              <div class="carousel-slide">
+                <img src="image/LINEYAHOO説明画像.jpg" alt="PrepMate画像2" />
+                <img src="image/LINEYAHOO集合写真.jpg" alt="PrepMate画像2" />
+                <img src="image/LINEYAHOOprepmate.jpg" alt="PrepMate画像2" />
+              </div>
+            </div>
+            <button class="carousel-btn prev" aria-label="前へ">‹</button>
+            <button class="carousel-btn next" aria-label="次へ">›</button>
+            <div class="carousel-indicators"></div>
+          </div>
+          <div class="work-content">
+            <h3>LINE YAHOO HACKU</h3>
+            <p>LINE YAHOO HACKUに参加して朝の時間効率化アプリ「PrepMate」を開発しました。
+            </p>
+          </div>
+        </div>
+
       </div>
-      
+    </section>
+
+    <section id="contact" class="contact-section">
       <div class="contact-content">
-        <div class="contact-info">
-          <p class="contact-message">プロジェクトのご相談、講座のご依頼など<br>お気軽にご連絡ください</p>
-          
-          <div class="contact-links">
-            <a href="mailto:nakamotoryoke@gmail.com" class="contact-link">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/>
-                <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/>
-              </svg>
-              <span>nakamotoryoke@gmail.com</span>
-            </a>
-            
-            <a href="https://github.com/ryorig" target="_blank" rel="noopener noreferrer" class="contact-link">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              <span>@ryorig</span>
-            </a>
-            
-            <a href="https://instagram.com/ryor_i28" target="_blank" rel="noopener noreferrer" class="contact-link">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
-                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
-                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
-              </svg>
-              <span>@ryor_i28</span>
-            </a>
-          </div>
-        </div>
+        <p>メール: <a href="mailto:nakamotoryoke@gmail.com">nakamotoryoke@gmail.com</a></p>
+        <p>Github: <a href="https://github.com/ryorig" target="_blank" rel="noopener noreferrer">@ryorig</a></p>
+        <p>Instagram:
+          <a href="https://instagram.com/ryor_i28" target="_blank" rel="noopener noreferrer">@ryor_i28</a>
+        </p>
       </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2025 Ryosuke Nakamoto. All rights reserved.</p>
-  </footer>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
