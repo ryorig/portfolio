@@ -72,36 +72,59 @@ body {
 
 /* ヘッダー */
 header {
-  background: var(--card-bg);
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
   z-index: 1000;
-  border-bottom: 1px solid var(--border);
+  background: transparent;
+  border: none;
 }
 
 nav {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 16px 0;
+  padding: 24px 28px 28px 28px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  max-width: 200px;
+  min-width: 180px;
+}
+
+.nav-logo-wrapper {
+  display: flex;
   align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px 30px;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.nav-dot {
+  width: 6px;
+  height: 6px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  display: block;
 }
 
 .nav-logo {
-  font-weight: 400;
-  letter-spacing: 2px;
-  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 15px;
+  color: #1a1a1a;
+  text-transform: lowercase;
+  line-height: 1.2;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
-  gap: 40px;
+  gap: 16px;
+  width: 100%;
 }
 
 .nav-links li {
@@ -110,11 +133,14 @@ nav {
 
 .nav-links a {
   text-decoration: none;
-  color: var(--main-txt);
+  color: #1a1a1a;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 1px;
   transition: opacity 0.3s;
+  display: block;
+  text-transform: uppercase;
+  line-height: 1.6;
 }
 
 .nav-links a:hover {
@@ -128,6 +154,9 @@ nav {
   background: none;
   cursor: pointer;
   padding: 5px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .nav-toggle span {
@@ -140,7 +169,8 @@ nav {
 
 /* メインコンテンツ */
 main {
-  margin-top: 60px;
+  margin-top: 0;
+  padding-left: 0;
 }
 
 /* セクション共通スタイル */
@@ -626,17 +656,13 @@ footer {
 
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
+  nav {
+    max-width: 180px;
+    padding: 16px 20px;
+  }
+
   .nav-links {
     display: none;
-    flex-direction: column;
-    background: var(--card-bg);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    border-bottom: 1px solid var(--border);
-    gap: 20px;
   }
 
   .nav-links.active {
@@ -645,6 +671,15 @@ footer {
 
   .nav-toggle {
     display: flex;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
 
   .scroll-indicator {
