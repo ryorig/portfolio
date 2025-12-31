@@ -7,35 +7,36 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="fixed-navbar">
-    <div class="navbar-brand">
-      <span class="brand-dot"></span>
-      <span class="brand-name">Nakam</span>
-    </div>
-    <ul class="navbar-links">
-      <li><a href="#ryosuke">RYOSUKE</a></li>
-      <li><a href="#about">ABOUT</a></li>
-      <li><a href="#works">WORKS</a></li>
-      <li><a href="#contact">CONTACT</a></li>
-    </ul>
-  </div>
   <header>
+    <nav>
+      <div class="nav-logo">NAKAMOTO</div>
+      <button class="nav-toggle" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#ryosuke">RYOSUKE</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main>
     <section id="ryosuke" class="centered">
       <div class="circle-animation-wrapper">
-        <img src="image/中本ロゴ.png" alt="about me" class="ryosuke-img" id="rotatingImage" />
+        <img src="image/ME.png" alt="about me" class="ryosuke-img" id="rotatingImage" />
       </div>
     </section>
 
     <section id="profile" class="profile-section">
       <div class="profile-img-container">
-        <img src="image/中本顔写真.jpg" alt="profile image" class="profile-img" />
+        <img src="image/TrueMe.jpg" alt="profile image" class="profile-img" />
       </div>
       <div class="profile-info">
         <p>名前：中本怜祐</p>
-        <p>    まちごとアシスト代表</p>
+        <p>　　まちごとアシスト代表</p>
         <p>活動：STEAM教育や地域課題のソリューションづくりに奮闘しています。</p>
         <p>所属：香川高専電子システム工学科</p>
         <p>出身：岡山県</p>
@@ -102,7 +103,151 @@
 
     <section id="works" class="works-section">
       <h2>Works</h2>
-      <div class="works-grid">        
+      <div class="works-grid">
+        
+        <!-- Work 1: らくべん -->
+        <div class="work-card">
+          <div class="carousel-container" data-carousel="1">
+            <div class="carousel-slides">
+              <div class="carousel-slide">
+                <img src="image/rakuben.jpg" alt="らくべん画像1" />
+              </div>
+              <div class="carousel-slide">
+                <img src="image/rakubeninstagram.jpg" alt="らくべん画像2" />
+              </div>
+            </div>
+            <button class="carousel-btn prev" aria-label="前へ">‹</button>
+            <button class="carousel-btn next" aria-label="次へ">›</button>
+            <div class="carousel-indicators"></div>
+          </div>
+          <div class="work-content">
+            <h3>らくべん</h3>
+            <p>中学二年生の時に過去問を共有するアプリを作成。</p>
+          </div>
+        </div>
+
+        <!-- Work 2: 自由研究ワークショップ -->
+        <div class="work-card">
+          <div class="carousel-container" data-carousel="2">
+            <div class="carousel-slides">
+              <div class="carousel-slide">
+                <img src="image/workshop.jpg" alt="自由研究ワークショップ画像1" />
+              </div>
+              <div class="carousel-slide">
+                <img src="image/20a10f23aa8d33eaaaa71d3dcc3dcde8.png" alt="自由研究ワークショップ画像2" />
+              </div>
+            </div>
+            <button class="carousel-btn prev" aria-label="前へ">‹</button>
+            <button class="carousel-btn next" aria-label="次へ">›</button>
+            <div class="carousel-indicators"></div>
+          </div>
+          <div class="work-content">
+            <h3>自由研究ワークショップ</h3>
+            <p>岡山の起業体験プログラムに参加し、地元の公民館で小学生向けのワークショップを実施。</p>
+          </div>
+        </div>
+
+        <!-- Work 3: プログラミング講座 -->
+        <div class="work-card">
+          <div class="carousel-container" data-carousel="3">
+            <div class="carousel-slides">
+              <div class="carousel-slide">
+                <img src="image/三豊AIプログラミング教室.jpg" alt="プログラミング講座画像1" />
+              </div>
+              <div class="carousel-slide">
+                <img src="image/programingschool.jpg" alt="プログラミング講座画像2" />
+              </div>
+            </div>
+            <button class="carousel-btn prev" aria-label="前へ">‹</button>
+            <button class="carousel-btn next" aria-label="次へ">›</button>
+            <div class="carousel-indicators"></div>
+          </div>
+          <div class="work-content">
+            <h3>プログラミング講座</h3>
+            <p>岡山で小中学生向けのプログラミング講座を継続的に実施。香川県でも運営中</p>
+          </div>
+        </div>
+
+        <!-- Work 4: PrepMate -->
+        <div class="work-card">
+          <div class="carousel-container" data-carousel="4">
+            <div class="carousel-slides">
+              <div class="carousel-slide">
+                <img src="image/LINEYAHOOeveryone.jpg" alt="PrepMate画像1" />
+              </div>
+              <div class="carousel-slide">
+                <img src="image/LINEYAHOOexplaing.jpg" alt="PrepMate画像2" />
+              </div>
+              <div class="carousel-slide">
+                <img src="image/prepmate.jpg" alt="PrepMate画像2" />
+              </div>
+            </div>
+            <button class="carousel-btn prev" aria-label="前へ">‹</button>
+            <button class="carousel-btn next" aria-label="次へ">›</button>
+            <div class="carousel-indicators"></div>
+          </div>
+          <div class="work-content">
+            <h3>PrepMate</h3>
+            <p>LINE YAHOO HACKUで開発したコーディネートアプリ</p>
+          </div>
+        </div>
+        
+        <div class="work-card">
+          <div class="carousel-container" data-carousel="4">
+            <div class="carousel-slides">
+              <div class="carousel-slide">
+                <img src="image/remonapurezen.jpg" alt="PrepMate画像2" />
+              </div>
+              <div class="carousel-slide">
+                <img src="image/REMONA.jpg" alt="PrepMate画像2" />
+              </div>
+              <div class="carousel-slide">
+                <img src="image/AKATSUKI.jpg" alt="PrepMate画像2" />
+              </div>
+            </div>
+            <button class="carousel-btn prev" aria-label="前へ">‹</button>
+            <button class="carousel-btn next" aria-label="次へ">›</button>
+            <div class="carousel-indicators"></div>
+          </div>
+          <div class="work-content">
+            <h3>RemoNA</h3>
+            <p>AKATSUKIプロジェクトに採択されて100万円の資金をもとに活動しています</p>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="carousel-container" data-carousel="4">
+            <div class="carousel-slides">
+              <div class="carousel-slide">
+                <img src="image/大分高専.jpg" alt="PrepMate画像2" />
+              </div>
+            </div>
+            <button class="carousel-btn prev" aria-label="前へ">‹</button>
+            <button class="carousel-btn next" aria-label="次へ">›</button>
+            <div class="carousel-indicators"></div>
+          </div>
+          <div class="work-content">
+            <h3>大分高専</h3>
+            <p>大分高専の研究室に見学に行きました！</p>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="carousel-container" data-carousel="4">
+            <div class="carousel-slides">
+              <div class="carousel-slide">
+                <img src="image/徳島高専.jpg" alt="PrepMate画像2" />
+              </div>
+            </div>
+            <button class="carousel-btn prev" aria-label="前へ">‹</button>
+            <button class="carousel-btn next" aria-label="次へ">›</button>
+            <div class="carousel-indicators"></div>
+          </div>
+          <div class="work-content">
+            <h3></h3>
+            <p></p>
+          </div>
+        </div>
 
       </div>
     </section>
@@ -110,6 +255,7 @@
     <section id="contact" class="contact-section">
       <div class="contact-content">
         <p>メール: <a href="mailto:nakamotoryoke@gmail.com">nakamotoryoke@gmail.com</a></p>
+        <p>電話番号: <a href="tel:070-8421-6363">070-8421-6363</a></p>
         <p>Github: <a href="https://github.com/ryorig" target="_blank" rel="noopener noreferrer">@ryorig</a></p>
         <p>Instagram:
           <a href="https://instagram.com/ryor_i28" target="_blank" rel="noopener noreferrer">@ryor_i28</a>
